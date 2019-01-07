@@ -1,0 +1,81 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/css/bootstrap.css";
+@import "~codemirror/lib/codemirror.css";
+@import "~codemirror/theme/material.css";
+
+/*** NAVBAR FEATURES ***/
+.navbar-light .navbar-nav .nav-link .signUp{
+	color:#21c87a;
+}
+
+.navbar-transparent {
+	background-color: transparent !important;
+	color: white !important;
+	transition: background-color 1s ease 0s;
+	box-shadow: none;
+}
+
+.signUp-transparent{
+	color: white;
+	background-color: transparent !important;
+	border-style: solid;
+	border-color: transparent;
+	border-width: 2px;
+	font-weight: 300;
+}
+
+.signUp{
+	background-color: #21c87a !important;
+	border-style: solid;
+	border-color:#21c87a;
+	border-width: 2px;
+	color: white !important;
+	font-weight: 200;
+}
+
+.logIn {
+    border-style: solid;
+	border-width: 2px;
+	border-color: transparent;
+	font-weight: 300;
+
+}
+
+.logIn-transparent {
+    border-style: solid;
+	border-width: 2px;
+	border-color: transparent;
+	font-weight: 200;
+}
+
+.bg-white{
+	background-color: white !important;
+	color: grey ;
+	box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15) !important ;  
+}
+
+.title-transparent{
+	color: white;
+	font-weight: 300;
+	font-size: 1.25rem;
+	letter-spacing: 3px;
+}
+
+.title{
+	color: #21c87a;
+	font-weight: 300;
+	font-size: 1.25rem;
+	letter-spacing: 3px;
+}
+
+.CodeMirror-scroll{
+	height: 100% !important;
+	// z-index: -1 !important;
+}
+
+.CodeMirror{
+	height: 100% !important;
+	// z-index: -1 !important;
+}
+
+
