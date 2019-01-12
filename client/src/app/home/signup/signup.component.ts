@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'signup-modal',
@@ -10,27 +11,28 @@ import { User } from 'src/app/models/user.model';
 })
 
 export class SignupComponent {
-  modalRef: BsModalRef;
-
   public user : User;
   
   constructor(
-    private modalService: BsModalService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router,
+    public modalRef: BsModalRef
     ) {
       this.user = new User()
     }
 
   close(){
     this.modalRef.hide()
-    this.modalRef = null;
   }
 
-  // signUp(id){
-  //   this.userService.addUser(id).subscribe(
-  //       user => {this.user = user}, 
-  //       err => console.error(err),
-  //       () => console.log('added user')
-  //     );
-  // }
+  signUp() {
+    if(this.user.username && this.user.password){
+        this.userService.addUser(this.user).subscribe(res =>{
+            console.log('response is ', res)
+        });
+    } else {
+        alert('Username and Password are required');
+    }
+  }
+  
 }

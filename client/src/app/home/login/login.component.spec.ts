@@ -4,7 +4,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { compileDirective } from '@angular/core/src/render3/jit/directive';
 
-describe('LoginComponent', () => {
+describe('loginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
 
@@ -28,14 +28,14 @@ describe('LoginComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create Modal Component', () => {
+  it('should create loginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have title as Sign Up and Start Learning!', () => {
+  it('should have title as Welcome back', () => {
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h5').textContent).toContain('Sign Up and Start Learning!');
+    expect(compiled.querySelector('h5').textContent).toContain('Welcome back');
   });
 
   it('should render the logIn button', async(() => {

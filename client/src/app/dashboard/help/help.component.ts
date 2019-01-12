@@ -7,13 +7,12 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
   styleUrls: ['./help.component.scss']
 })
 export class HelpComponent {
-  modalRef: BsModalRef;
+  // modalRef: BsModalRef;
 
-  constructor(private modalService: BsModalService) {}
-
+  constructor(public modalRef: BsModalRef
+    ) {}
+    
   close(){
-    this.modalRef.hide()
-    this.modalRef = null;
+    this.modalRef.hide();
   }
-
 }

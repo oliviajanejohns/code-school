@@ -17,15 +17,21 @@ export class UserService {
 			password: user.password
 		})
     }
+
+    addUser(user: User){
+		return this.http.post('/api/user/signUp',{
+			username : user.username,
+			password : user.password
+		})
+    }
     
     // /** GET hero by id once logging in */
-    // getUser(id: string): Observable<User> {
-    //     const url = `${this.usersUrl}/${id}`;
+    // getUser(user: User): Observable<User> {
+    //     const url = `/api/user/login/${user.username}`;
     //     return this.http.get<User>(url);
     // }
 
-    // //////// Save methods //////////
-    // /** POST: add a new hero to the server */
+    /** POST: add a new hero to the server */
     // addUser(user: User): Observable<User> {
     //     return this.http.post<User>(this.usersUrl, User, httpOptions).pipe(
     //     tap((user: User) => console.log(`added user w/ id=${user.username}`)),

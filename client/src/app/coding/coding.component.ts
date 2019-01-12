@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 
 // declare function runit(): any;
 

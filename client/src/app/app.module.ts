@@ -71,6 +71,7 @@ import {FormsModule} from '@angular/forms';
   entryComponents: [ 
     SignupComponent, 
     LoginComponent,
+    HelpComponent
   ],
 })
 export class AppModule { }

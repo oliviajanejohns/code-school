@@ -3,6 +3,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
+import {ModalDirective} from 'ngx-bootstrap';
 
 @Component({
   selector: 'login-modal',
@@ -14,18 +15,18 @@ import { User } from 'src/app/models/user.model';
 export class LoginComponent {
   public user: User;
 
-  modalRef: BsModalRef;
-
+  // modalRef: BsModalRef;
+  modalDirective: ModalDirective;
   constructor( 
-    private userService: UserService,  
-    private router: Router
+    private userService: UserService,
+    private router: Router,
+    public modalRef: BsModalRef
   ){  	
     this.user = new User();
   }
 
   close(){
-    this.modalRef.hide()
-    this.modalRef = null;
+    this.modalRef.hide();
   }
 
   validateLogin() {
@@ -37,7 +38,6 @@ export class LoginComponent {
         } else {
           alert('Wrong username or password');
         }
-        
       }, error => {
         console.log('error is ', error);
       });

@@ -49,8 +49,23 @@
                     output: outf,
                     read: builtinRead
                 });
+                (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = 'mycanvas';
                 var myPromise = Sk.misceval.asyncToPromise(function() {
-                    return Sk.importMainWithBody("<stdin>", false, prog, true);
+                    // return Sk.importMainWithBody("<stdin>", false, prog, true);
+                    try {
+                        return Sk.importMainWithBody("<stdin>",false, prog, true); 
+                    }
+                    // catch(e) {
+                    //     alert(e.toString())
+                    // }
+                    catch(e){
+                        var error_text = document.createTextNode(e.toString());
+                        var spanHeader = document.createElement('span');
+                        spanHeader.style.color = "rgb(155, 102, 102)";
+                        spanHeader.appendChild(error_text);
+                        var divHeader = document.getElementById('output');
+                        divHeader.appendChild(spanHeader);
+                    }
                 });
                 myPromise.then(function(mod) {
                         console.log('success');
@@ -58,12 +73,13 @@
                     function(err) {
                         console.log(err.toString());
                     });
+
         }
         window.onload = function() {
                 editor = CodeMirror.fromTextArea(document.getElementById('textbox'), {
                     mode: {
                         name: "python",
-                        version: 2,
+                        version: 3.2,
                         singleLineStringErrors: false
                     },
                     lineNumbers: true,
@@ -71,6 +87,26 @@
                     indentUnit: 4,
                     readOnly: false,
                 });
+        }
+        Sk.onAfterImport = function(library) {
+            switch(library) {
+                case 'pygal':
+                // make charts render instantly
+                Highcharts.setOptions({
+                    plotOptions: {
+                    series: {
+                        animation: false
+                    }
+                    }
+                });
+                break;
+                case 'turtle':
+                // make turtle draw instantly
+                Sk.tg.defaults.animate = false;
+                Sk.tg.Turtle.prototype.speed = function() {}
+                Sk.tg.Turtle.prototype.delay = function() {}
+                break;
+            }
         }
       </script>
     <app-root></app-root>
