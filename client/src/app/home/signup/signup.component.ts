@@ -12,11 +12,11 @@ import { Router } from '@angular/router';
 
 export class SignupComponent {
   public user : User;
-  
+
   constructor(
     private userService: UserService,
     private router: Router,
-    public modalRef: BsModalRef
+    public modalRef: BsModalRef,
     ) {
       this.user = new User()
     }
@@ -28,11 +28,12 @@ export class SignupComponent {
   signUp() {
     if(this.user.username && this.user.password){
         this.userService.addUser(this.user).subscribe(res =>{
-            console.log('response is ', res)
-        });
+            console.log('response is ', res);
+            this.router.navigate(['dashboard/:id']);
+            this.close();
+        }); 
     } else {
         alert('Username and Password are required');
     }
   }
-  
 }

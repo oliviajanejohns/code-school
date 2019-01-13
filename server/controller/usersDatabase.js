@@ -1,7 +1,7 @@
 //Require the express package and use express.Router()
 const express = require('express');
 const router = express.Router();
-// const bucketlist = require('../models/List');
+const User = require('../models/List');
 
 
 //GET HTTP method to /bucketlist

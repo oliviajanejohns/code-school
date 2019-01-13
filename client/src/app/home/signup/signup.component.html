@@ -7,17 +7,36 @@
       </button>
     </div>
     <div class="modal-body">
-        <form>
+        <form #signUpForm="ngForm" (ngSubmit)="signUp()">
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-addon">
                       <span class="glyphicon glyphicon-user"></span> 
                     </div>
-                    <input type="text" class="form-control text-center" [(ngModel)]="user.username" id="username" name="username" placeholder="Username">
-                  </div>     
+                    <input type="text" class="form-control text-center" [(ngModel)]="user.username" id="username" name="username" #username="ngModel" placeholder="Username" required>
+                  </div> 
+                  <!-- <div [hidden]="username.valid || username.pristine" class="alert alert-danger">
+                      Username is required
+                  </div>     -->
+                  <div *ngIf="username.errors && (username.dirty || username.touched)" class="alert alert-danger text-center">
+                    <div [hidden]="!username.errors.required">
+                      Username is required
+                    </div>
+                  </div>
               </div>
             <div class="form-group">
-              <input type="password" [(ngModel)]="user.password" class="form-control text-center" id="password" name="password" placeholder="Password">
+              <input type="password" [(ngModel)]="user.password" class="form-control text-center" id="password" name="password" #password="ngModel" placeholder="Password" required minlength="6">
+              <!-- <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+                Password is required
+              </div>    -->
+              <div *ngIf="password.errors && (password.dirty || password.touched)" class="alert alert-danger text-center">
+                <div [hidden]="!password.errors.required">
+                  Password is required
+                </div>
+                <div [hidden]="!password.errors.minlength">
+                  Password must be at least 6 characters long.
+                </div>
+              </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" id="close" (click)="close()">Close</button>
@@ -25,6 +44,5 @@
             </div>
           </form>
     </div>
+  </div>
 </div>
-</div>
-

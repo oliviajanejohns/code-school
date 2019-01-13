@@ -53,6 +53,20 @@ app.post('/api/user/signUp', (req, res) => {
     });
 })
 
+app.post('/api/user/delete', (req, res) => {
+	mongoose.connect(url, { useMongoClient: true }, function(err){
+		if(err) throw err;
+		Post.findByIdAndRemove(req.body.id,
+			(err, doc) => {
+			if(err) throw err;
+			return res.status(200).json({
+				status: 'success',
+				data: doc
+			})
+		})
+	});
+})
+
 // HTTP listener
 app.listen(3000, function () {
   console.log('Listening on port 3000');

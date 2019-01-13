@@ -12,17 +12,17 @@ export class UserService {
     constructor(private http: HttpClient) { }
 
     validateLogin(user: User){
-		return this.http.post('/api/user/login',{
-			username: user.username,
-			password: user.password
-		})
+      return this.http.post('/api/user/login',{
+        username: user.username,
+        password: user.password
+      })
     }
 
     addUser(user: User){
-		return this.http.post('/api/user/signUp',{
-			username : user.username,
-			password : user.password
-		})
+      return this.http.post('/api/user/signUp',{
+        username : user.username,
+        password : user.password
+      })
     }
     
     // /** GET hero by id once logging in */

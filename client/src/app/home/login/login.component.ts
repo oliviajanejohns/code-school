@@ -35,6 +35,7 @@ export class LoginComponent {
         console.log('result is ', result);
         if(result['status'] === 'success') {
           this.router.navigate(['dashboard/:id']);
+          this.close();
         } else {
           alert('Wrong username or password');
         }

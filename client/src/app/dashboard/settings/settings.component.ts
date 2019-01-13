@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { HelpComponent } from '../help/help.component';
 
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss']
 })
-export class SettingsComponent implements OnInit {
+export class SettingsComponent {
+  modalRef: BsModalRef;
 
-  constructor() { }
+  constructor(private modalService: BsModalService) { }
 
-  ngOnInit() {
+  openModal() {
+    this.modalRef = this.modalService.show(HelpComponent);
   }
 
 }

@@ -27,7 +27,7 @@ import { ChatComponent } from './chat/chat.component';
 import { HelpComponent } from './dashboard/help/help.component';
 import { SettingsComponent } from './dashboard/settings/settings.component';
 import { HttpClientModule } from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -52,7 +52,7 @@ import {FormsModule} from '@angular/forms';
     HelpComponent,
     SettingsComponent,
     SignupComponent, 
-    LoginComponent
+    LoginComponent,
     ],
   imports: [
     BrowserModule,
@@ -61,7 +61,8 @@ import {FormsModule} from '@angular/forms';
     BrowserAnimationsModule, 
     CodemirrorModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [   
     BsModalService,
