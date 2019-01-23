@@ -29,7 +29,7 @@ export class SignupComponent {
     if(this.user.username && this.user.password){
         this.userService.addUser(this.user).subscribe(res =>{
             console.log('response is ', res);
-            this.router.navigate(['dashboard/:id']);
+            this.router.navigate(['dashboard/']);
             this.close();
         }); 
     } else {

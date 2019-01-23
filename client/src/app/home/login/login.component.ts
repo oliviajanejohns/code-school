@@ -14,9 +14,8 @@ import {ModalDirective} from 'ngx-bootstrap';
 })
 export class LoginComponent {
   public user: User;
-
-  // modalRef: BsModalRef;
   modalDirective: ModalDirective;
+
   constructor( 
     private userService: UserService,
     private router: Router,
@@ -34,7 +33,7 @@ export class LoginComponent {
   		this.userService.validateLogin(this.user).subscribe(result => {
         console.log('result is ', result);
         if(result['status'] === 'success') {
-          this.router.navigate(['dashboard/:id']);
+          this.router.navigate(['/dashboard/']);
           this.close();
         } else {
           alert('Wrong username or password');

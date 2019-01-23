@@ -9,10 +9,10 @@ import { SettingsComponent } from './dashboard/settings/settings.component';
 const routes: Routes = [
   	{ path: '', redirectTo: '/', pathMatch: 'full' },
     { path: '', component: HomeComponent },
-    { path: 'dashboard/:id', component: DashboardComponent },
-    { path: 'coding/:id', component: CodingComponent },
-    { path: 'chat/:id', component: ChatComponent },
-    { path: 'settings/:id', component: SettingsComponent }
+    { path: 'dashboard', component: DashboardComponent },
+    { path: 'coding', component: CodingComponent },
+    { path: 'chat', component: ChatComponent },
+    { path: 'settings', component: SettingsComponent }
   ];
 
 @NgModule({
