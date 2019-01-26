@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../models/user.model';
 
 // declare function runit(): any;
 
@@ -8,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./coding.component.scss']
 })
 export class CodingComponent {
-  public count = 0;
+  currentUser: User;
 
-  constructor() { }
+  constructor() 
+  {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  }
+  
+  public count = 0;
 
   next(){
     if(this.count<11){

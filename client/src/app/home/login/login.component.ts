@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import {ModalDirective} from 'ngx-bootstrap';
+import { ActivatedRoute } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
   selector: 'login-modal',
@@ -12,16 +15,24 @@ import {ModalDirective} from 'ngx-bootstrap';
   providers: [ UserService ]
 
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   public user: User;
-  modalDirective: ModalDirective;
+  model: any = {};
 
+  // modalRef: BsModalRef;
+  modalDirective: ModalDirective;
   constructor( 
-    private userService: UserService,
     private router: Router,
-    public modalRef: BsModalRef
+    public modalRef: BsModalRef,
+    private authService: AuthenticationService,
+    private alertService: AlertService
   ){  	
     this.user = new User();
+  }
+  
+  ngOnInit(){ 
+    // reset login status
+    this.authService.logout();
   }
 
   close(){
@@ -29,20 +40,14 @@ export class LoginComponent {
   }
 
   validateLogin() {
-  	if(this.user.username && this.user.password) {
-  		this.userService.validateLogin(this.user).subscribe(result => {
-        console.log('result is ', result);
-        if(result['status'] === 'success') {
-          this.router.navigate(['/dashboard/']);
-          this.close();
-        } else {
-          alert('Wrong username or password');
-        }
-      }, error => {
-        console.log('error is ', error);
+  this.authService.login(this.user.username, this.user.password)
+      .subscribe(
+        data => {
+        this.router.navigate(['/dashboard']);
+        this.close();
+      },
+      error => {
+        this.alertService.error(error);
       });
-  	} else {
-  		alert('enter user name and password');
-  	}
   }
 }

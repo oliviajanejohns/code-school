@@ -5,14 +5,17 @@ import { DashboardComponent }   from './dashboard/dashboard.component';
 import { CodingComponent } from './coding/coding.component';
 import { ChatComponent } from './chat/chat.component';
 import { SettingsComponent } from './dashboard/settings/settings.component';
+import { AuthGuard } from './_guards/auth.guard';
 
 const routes: Routes = [
   	{ path: '', redirectTo: '/', pathMatch: 'full' },
     { path: '', component: HomeComponent },
-    { path: 'dashboard', component: DashboardComponent },
-    { path: 'coding', component: CodingComponent },
-    { path: 'chat', component: ChatComponent },
-    { path: 'settings', component: SettingsComponent }
+    { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+    { path: 'coding', component: CodingComponent, canActivate: [AuthGuard] },
+    { path: 'chat', component: ChatComponent, canActivate: [AuthGuard] },
+    { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
+      // otherwise redirect to home
+    { path: '**', redirectTo: '' }
   ];
 
 @NgModule({

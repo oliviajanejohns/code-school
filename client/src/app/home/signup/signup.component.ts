@@ -3,6 +3,8 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user.model';
 import { Router } from '@angular/router';
+import { AlertService } from 'src/app/services/alert.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'signup-modal',
@@ -12,11 +14,14 @@ import { Router } from '@angular/router';
 
 export class SignupComponent {
   public user : User;
+  model: any = {};
 
   constructor(
     private userService: UserService,
     private router: Router,
     public modalRef: BsModalRef,
+    public alertService: AlertService,
+    public authService: AuthenticationService
     ) {
       this.user = new User()
     }
@@ -27,13 +32,17 @@ export class SignupComponent {
 
   signUp() {
     if(this.user.username && this.user.password){
-        this.userService.addUser(this.user).subscribe(res =>{
-            console.log('response is ', res);
-            this.router.navigate(['dashboard/']);
-            this.close();
-        }); 
+      this.userService.create(this.user)
+          .subscribe(
+              data => {
+                  this.alertService.success('Registration successful', true);
+              },
+              error => {
+                  this.alertService.error(error);
+              }
+            );
     } else {
-        alert('Username and Password are required');
+      alert('Username and Password are required');
     }
   }
-}
+}    

@@ -28,6 +28,11 @@ import { HelpComponent } from './dashboard/help/help.component';
 import { SettingsComponent } from './dashboard/settings/settings.component';
 import { HttpClientModule } from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { AlertService } from './services/alert.service';
+import { AuthenticationService } from './services/authentication.service';
+import { UserService } from './services/user.service';
+import { JwtInterceptorProvider } from './_helpers/jwt.interceptor';
+import { AuthGuard } from './_guards/auth.guard';
 
 
 @NgModule({
@@ -66,7 +71,12 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
   ],
   providers: [   
     BsModalService,
-    BsModalRef
+    BsModalRef,
+    JwtInterceptorProvider,
+    AuthGuard,
+    UserService,
+    AuthenticationService,
+    AlertService
   ],
   bootstrap: [AppComponent],
   entryComponents: [ 
