@@ -35,12 +35,13 @@ export class SignupComponent {
       this.userService.create(this.user)
           .subscribe(
               data => {
-                  this.alertService.success('Registration successful', true);
+                  this.router.navigate(['/']);
+                  this.close();
               },
               error => {
                   this.alertService.error(error);
               }
-            );
+          );
     } else {
       alert('Username and Password are required');
     }

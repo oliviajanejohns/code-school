@@ -10,10 +10,11 @@
     <nav aria-label="links">
         <ul class="nav navbar-nav navbar-right">
             <li class="nav-item navbar-right">
-              <a class="nav-link" [ngClass] = "(scrolled ? 'logIn' : 'logIn-transparent')" (click)="openLoginModal()">Log In </a>
+              <a *ngIf="!currentUser"  class="nav-link" [ngClass] = "(scrolled ? 'logIn' : 'logIn-transparent')" (click)="openLoginModal()">Log In </a>
           </li>
           <li class="nav-item navbar-right">
-            <a class="nav-link" [ngClass] = "(scrolled ? 'signUp' : 'signUp-transparent')" (click)="openSignupModal()">Sign Up</a>
+            <a *ngIf="!currentUser" class="nav-link" [ngClass] = "(scrolled ? 'signUp' : 'signUp-transparent')" (click)="openSignupModal()">Sign Up</a>
+            <a *ngIf="currentUser" class="nav-link" [ngClass] = "(scrolled ? 'signUp' : 'signUp-transparent')" (click)="logout()">Log Out </a>
           </li>
         </ul>
     </nav>

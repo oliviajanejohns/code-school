@@ -3,6 +3,9 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { DOCUMENT } from "@angular/platform-browser";
 import { LoginComponent } from './home/login/login.component';
 import { SignupComponent } from './home/signup/signup.component';
+import { User } from './models/user.model';
+import { AuthenticationService } from './services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -14,11 +17,16 @@ export class AppComponent {
   modalRef: BsModalRef;
   title = 'code-space';
   public scrolled: boolean = true;
-  
+  currentUser: User;
+
   constructor(
     private modalService: BsModalService,
+    private authService: AuthenticationService,
+    private router: Router,
     @Inject(DOCUMENT) private doc: Document
-    ) {}
+    ) {
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    }
 
     @HostListener("window:scroll", [])
     onWindowScroll() {
@@ -30,6 +38,12 @@ export class AppComponent {
     } else {
         this.scrolled = false;
     }
+  }
+
+  logout() {
+    // remove user from local storage to log user out
+    this.authService.logout();
+    this.router.navigate(['/']);
   }
 
   openSignupModal() {
