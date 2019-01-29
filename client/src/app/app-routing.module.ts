@@ -13,7 +13,7 @@ const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
     { path: 'coding', component: CodingComponent, canActivate: [AuthGuard] },
     { path: 'chat', component: ChatComponent, canActivate: [AuthGuard] },
-    { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
+    { path: 'dashboard/settings', component: SettingsComponent, canActivate: [AuthGuard]},
       // otherwise redirect to home
     { path: '**', redirectTo: '' }
   ];

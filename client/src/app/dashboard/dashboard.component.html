@@ -13,7 +13,7 @@
     <li class="nav-item">
       <a class="nav-link" href="/coding/">
         <span data-feather=""></span>
-        Learn
+        Code
       </a>
     </li>
     <li class="nav-item">
@@ -32,7 +32,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/settings/">
+        <a class="nav-link" href="/dashboard/settings/">
           <span data-feather=""></span>
           Settings
         </a>
@@ -46,7 +46,7 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="/dashboard/">Dashboard</a>
+              <a href="/dashboard">Dashboard</a>
             </li>
           </ol>
           
@@ -88,8 +88,10 @@
         </div>
         <div class="card col-12">
           <div class="card-body">
-            <h5 class="card-title">Learn Python 2</h5>
-            <p class="card-text">Python is one the three most popular interpreted languages. Taught in numerous schools globally</p>
+            <h5 class="card-title text">Learn Python 2</h5>
+            <p class="card-text label">Python is one the three most popular interpreted languages. Taught in numerous schools globally</p>
+            <p class="card-text label italic">Content Covered: Introduction to Python, Strings, Lists, Sorting, Dicts and Files, Regular Expressions </p>
+            <button type="button" class="btn btn-lg btn-primary confirm" [routerLink]="['/coding']"><span>Code</span></button>
           </div>
         </div>
 

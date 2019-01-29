@@ -258,7 +258,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
 
 .text{
   color: black;
-  font-weight: 250;
+  font-weight: 350;
 }
 
 .chat{
@@ -267,4 +267,18 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
 
 .help{
   color: #21c87a !important;
+}
+
+.italic{
+  font-style: italic;
+}
+
+.label{
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.confirm{
+  font-weight: 300;
+  font-size: 15px;
 }

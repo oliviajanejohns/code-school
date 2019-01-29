@@ -1,12 +1,12 @@
 <!-- This component displays the app header and footer -->
-<nav class="navbar navbar-expand-lg fixed-top" [ngClass] = "(scrolled ? 'bg-white' : 'navbar-transparent')" >
+<nav *ngIf="!currentUser" class="navbar navbar-expand-lg fixed-top" [ngClass] = "(scrolled ? 'bg-white' : 'navbar-transparent')" >
   <div class="container underline"> 
-  <a class="navbar-brand" [ngClass] = "(scrolled ? 'title' : 'title-transparent')" href="/">Code Space</a>
+  <a class="navbar-brand col-9" [ngClass] = "(scrolled ? 'title' : 'title-transparent')" href="/">Code Space</a>
   <button class="navbar-toggler" [ngClass]="(scrolled ? 'navbar-light' : 'navbar-dark')" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarToggle">
+  <div class="collapse navbar-collapse col-3" id="navbarToggle">
     <nav aria-label="links">
         <ul class="nav navbar-nav navbar-right">
             <li class="nav-item navbar-right">
@@ -14,13 +14,32 @@
           </li>
           <li class="nav-item navbar-right">
             <a *ngIf="!currentUser" class="nav-link" [ngClass] = "(scrolled ? 'signUp' : 'signUp-transparent')" (click)="openSignupModal()">Sign Up</a>
-            <a *ngIf="currentUser" class="nav-link" [ngClass] = "(scrolled ? 'signUp' : 'signUp-transparent')" (click)="logout()">Log Out </a>
           </li>
         </ul>
     </nav>
   </div>
   </div>
 </nav>
+
+<!-- This component displays the app header and footer -->
+<nav *ngIf="currentUser" class="navbar navbar-expand-lg fixed-top bg-white">
+    <div class="container underline"> 
+    <a class="navbar-brand col-9 title" href="/">Code Space</a>
+    <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse col-3" id="navbarToggle">
+      <nav aria-label="links">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item navbar-right">
+              <a class="nav-link logIn" (click)="logout()">Log Out </a>
+            </li>
+          </ul>
+      </nav>
+    </div>
+    </div>
+  </nav>
+  
 
 <router-outlet></router-outlet>
 

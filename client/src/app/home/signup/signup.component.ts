@@ -23,7 +23,7 @@ export class SignupComponent {
     public alertService: AlertService,
     public authService: AuthenticationService
     ) {
-      this.user = new User()
+      this.user = new User();
     }
 
   close(){
@@ -31,7 +31,7 @@ export class SignupComponent {
   }
 
   signUp() {
-    if(this.user.username && this.user.password){
+    if(this.user.email && this.user.username && this.user.password){
       this.userService.create(this.user)
           .subscribe(
               data => {

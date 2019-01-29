@@ -1,58 +1,116 @@
 <div id="wrapper">
-  <!-- Sidebar -->
-<ul class="sidebar navbar-nav">
-  <li class="nav-item divider">
-      Menu
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/dashboard/">
-      <span data-feather="home"></span>
-      Dashboard <span class="sr-only">(current)</span>
-    </a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/coding/">
-      <span data-feather=""></span>
-      Learn
-    </a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/chat/">
-      <span data-feather=""></span>
-      Chat
-    </a>
-  </li>
-  <li class="nav-item divider">
-      More
-  </li>
-  <li class="nav-item">
-      <a class="nav-link help" (click)="openModal()">
-        <span data-feather=""></span>
-        Help
+    <!-- Sidebar -->
+  <ul class="sidebar navbar-nav">
+    <li class="nav-item divider">
+        Menu
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/dashboard/">
+        <span data-feather="home"></span>
+        Dashboard <span class="sr-only">(current)</span>
       </a>
-  </li>
-  <li class="nav-item">
-      <a class="nav-link active" href="/settings/">
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/coding/">
         <span data-feather=""></span>
-        Settings
+        Code
       </a>
-  </li>
-</ul>
-
-  <!-- Main Content -->
-  <div id="content-wrapper">
-    <div class="container-fluid">
-
-      <!-- Breadcrumbs-->
-      <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="/settings/">Settings</a>
-          </li>
-        </ol>
-
-        <div class="card">
-          
-        </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/chat/">
+        <span data-feather=""></span>
+        Chat
+      </a>
+    </li>
+    <li class="nav-item divider">
+        More
+    </li>
+    <li class="nav-item">
+        <a class="nav-link help" (click)="openModal()">
+          <span data-feather=""></span>
+          Help
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" href="/dashboard/settings">
+          <span data-feather=""></span>
+          Settings
+        </a>
+    </li>
+  </ul>
+  
+    <!-- Main Content -->
+    <div id="content-wrapper">
+      <div class="container-fluid">
+  
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="/dashboard/settings">Settings
+              </a>
+            </li>
+          </ol>
+  
+          <div class="card update">
+            <div class="details">
+              <form #signUpForm="ngForm">
+                  <p class="main"> Account Information </p>
+                  <div class="form-group labels">
+                      <label for="name">Name</label>
+                      <input type="text" [(ngModel)]="currentUser.name" class="form-control labels" id="name" name="name" #name="ngModel" placeholder="{{currentUser.name}}"> 
+                  </div>
+                  <div class="form-group labels">
+                      <label for="email">Email (required)</label>
+                      <input type="text" [(ngModel)]="currentUser.email" class="form-control labels" id="email" name="email" #email="ngModel" placeholder="{{currentUser.email}}" required> 
+                      <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger text-center">
+                        <div [hidden]="!email.errors.required">
+                          Email is required
+                        </div>
+                      </div>
+                    </div>
+                  <div class="form-group labels">
+                      <label for="username">Username (required)</label>
+                          <input type="text" class="form-control labels" [(ngModel)]="currentUser.username" id="username" name="username" #username="ngModel" placeholder="{{currentUser.username}}" required>
+                        <div *ngIf="username.errors && (username.dirty || username.touched)" class="alert alert-danger text-center">
+                          <div [hidden]="!username.errors.required">
+                            Username is required
+                          </div>
+                        </div>
+                    </div>
+                    <div class="form-group labels">
+                        <label for="level"> Development Experience </label>
+                        <div class="row options">
+                          <div class="radio levelOptions">
+                            <label><input type="radio" [(ngModel)]="currentUser.level" id="level" name="level" value="beginner">Learning to Program</label>
+                          </div>
+                          <div class="radio levelOptions">
+                            <label><input type="radio" [(ngModel)]="currentUser.level" id="level" name="level" value="intermediate">Intermediate Programmer</label>
+                          </div>
+                          <div class="radio levelOptions">
+                            <label><input type="radio" [(ngModel)]="currentUser.level" id="level" name="level" value="advanced">Advanced Programmer</label>
+                          </div>
+                        </div>
+                    </div>
+                  <div class="buttons">
+                    <button class="btn btn-primary pad confirm" (click)="editUser()">Update Account</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="card deleteCard">
+                <div class="details">
+                  <form #signUpForm="ngForm">
+                      <h6 class="main"> Delete Account</h6>
+                      <div class="delete labels">
+                        If you wish you can delete your account by simply clicking the button below. After deleting your account you are free to sign up again using the same email address.
+                      </div>
+                      <div class="buttons">
+                          <button class="btn btn-secondary confirm" (click)="deleteUser(currentUser._id)">Delete Account</button>
+                      </div>
+                  </form>
+                </div>
+            </div>
+      </div>
     </div>
   </div>
-</div>
+  

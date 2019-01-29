@@ -8,7 +8,15 @@
     </div>
     <div class="modal-body">
         <!-- <h6 class="modal-text">Sign up and start learning today </h6> -->
-        <form #signUpForm="ngForm" (ngSubmit)="signUp()">
+        <form #signUpForm="ngForm">
+            <div class="form-group">
+                <input type="text" [(ngModel)]="user.email" class="form-control text-center" id="email" name="email" #email="ngModel" placeholder="Email Address" required>
+                <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger text-center">
+                  <div [hidden]="!email.errors.required">
+                    Email is required
+                  </div>
+                </div>
+              </div>
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-addon">
@@ -36,17 +44,6 @@
                 </div>
               </div>
             </div>
-            <!-- <div class="form-group">
-              <input type="password" [(ngModel)]="user.password" class="form-control text-center" id="password" name="password" #password="ngModel" placeholder="Confirm" required minlength="6">
-              <div *ngIf="password.errors && (password.dirty || password.touched)" class="alert alert-danger text-center">
-                <div [hidden]="!password.errors.required">
-                  Password is required
-                </div>
-                <div [hidden]="!password.errors.minlength">
-                  Password must match
-                </div>
-              </div>
-            </div> -->
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" id="close" (click)="close()">Close</button>
               <button type="submit" class="btn btn-primary" id="signUp" (click)="signUp()">Sign Up</button>
