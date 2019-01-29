@@ -6,6 +6,8 @@ var userService = require('services/user.service');
 router.post('/authenticate', authenticate);
 router.post('/register', register);
 router.get('/current', getCurrent);
+router.put('/:_id', update);
+router.delete('/:_id', _delete);
 
 module.exports = router;
 
@@ -44,6 +46,26 @@ function getCurrent(req, res) {
             } else {
                 res.sendStatus(404);
             }
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
+
+function update(req, res) {
+    userService.update(req.params._id, req.body)
+        .then(function () {
+            res.json('success');
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
+
+function _delete(req, res) {
+    userService.delete(req.params._id)
+        .then(function () {
+            res.json('success');
         })
         .catch(function (err) {
             res.status(400).send(err);

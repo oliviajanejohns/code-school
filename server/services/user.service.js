@@ -29,6 +29,9 @@ function authenticate(username, password) {
             deferred.resolve({
                 _id: user._id,
                 username: user.username,
+                email: user.email,
+                level: user.level,
+                name: user.name,
                 token: jwt.sign({ sub: user._id }, config.secret)
             });
         } else {
@@ -90,7 +93,7 @@ function create(userParam) {
             } else {
                 createUser();
             }
-        });
+    });
 
     function createUser() {
         // set user object to userParam without the cleartext password
@@ -140,9 +143,10 @@ function update(_id, userParam) {
     function updateUser() {
         // fields to update
         var set = {
-            firstName: userParam.firstName,
-            lastName: userParam.lastName,
+            email: userParam.email,
             username: userParam.username,
+            name: userParam.name,
+            level: userParam.level,
         };
 
         // update password if it was entered
