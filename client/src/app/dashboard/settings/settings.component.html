@@ -60,7 +60,7 @@
                       <input type="text" [(ngModel)]="currentUser.name" class="form-control labels" id="name" name="name" #name="ngModel" placeholder="{{currentUser.name}}"> 
                   </div>
                   <div class="form-group labels">
-                      <label for="email">Email (required)</label>
+                      <label for="email">* Email (required)</label>
                       <input type="text" [(ngModel)]="currentUser.email" class="form-control labels" id="email" name="email" #email="ngModel" placeholder="{{currentUser.email}}" required> 
                       <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger text-center">
                         <div [hidden]="!email.errors.required">
@@ -69,7 +69,7 @@
                       </div>
                     </div>
                   <div class="form-group labels">
-                      <label for="username">Username (required)</label>
+                      <label for="username">* Username (required)</label>
                           <input type="text" class="form-control labels" [(ngModel)]="currentUser.username" id="username" name="username" #username="ngModel" placeholder="{{currentUser.username}}" required>
                         <div *ngIf="username.errors && (username.dirty || username.touched)" class="alert alert-danger text-center">
                           <div [hidden]="!username.errors.required">
@@ -91,6 +91,21 @@
                           </div>
                         </div>
                     </div>
+                    <!-- <h6 class="main"> Update Password</h6>
+                    <div class="form-group labels">
+                        <div class="row">
+                          <div class="col-6">
+                            <label for="password"> New Password </label>
+                            <input type="passwords" class="form-control labels" [(ngModel)]="currentUser.password" id="password" name="password" #password="ngModel" required>
+                          </div>
+                          <div class="col-6">
+                            <label for="password"> Confirm New Password </label>
+                            <input type="passwords" class="form-control labels" id="password" name="password" required>
+                          </div>
+                        </div>
+                        <label for="password"> Current Password </label>
+                        <input type="passwords" class="form-control labels" id="password" name="password" #password="ngModel" required>
+                    </div> -->
                   <div class="buttons">
                     <button class="btn btn-primary pad confirm" (click)="editUser()">Update Account</button>
                   </div>

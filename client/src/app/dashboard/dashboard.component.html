@@ -82,7 +82,7 @@
         <div class="row">
           <div class="col-12">
             <h4 class="text">
-              Get Started Now
+              Start Learning Now
             </h4>
           </div>
         </div>
@@ -95,21 +95,37 @@
           </div>
         </div>
 
-        <!-- Chat
+         <!-- Friends
         <div class="row chat">
           <div class="col-12">
             <h4 class="text">
-              Chat
+              Your Friends
             </h4>
           </div>
         </div>
         <div class="card col-12">
           <div class="card-body">
-            <h5 class="card-title">Chat </h5>
-            <p class="card-text">Python is one the three most popular interpreted languages. Taught in numerous schools globally</p>
+             <h5 class="card-title">Chat</h5> 
+            <p class="card-text"> You can become friends with other members by following each other or inviting new friends to join Code Space.</p>
+
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Position</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Level</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th *ngFor="let user of users" scope="row"></th>
+                    <td>{{user.username}}</td>
+                    <td>{user.level}</td>
+                    <td>position</td>
+                  </tr>
+                </tbody>
+              </table>
           </div>
-        </div> -->
-
-
+        </div>  -->
     </div>
 </div>

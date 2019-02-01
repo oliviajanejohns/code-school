@@ -58,6 +58,13 @@
     float: right;
 }
 
+.reset{
+    font-size: 12px;
+    z-index:100;
+    float: right;
+    margin-right: 10px;
+}
+
 /*** OUTPUT ***/
 .terminal{
     color: white;
@@ -77,3 +84,4 @@
     bottom: 0px;
     width: 100%;
 }
+

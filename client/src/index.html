@@ -108,6 +108,17 @@
                 break;
             }
         }
+
+        function reset() {
+            editor.setValue('# Please enter code here');
+        }
+
+        function check() {
+            value = editor.getValue();
+            if (value == 'print "hi"'){
+                runit();
+            }
+        }
       </script>
     <app-root></app-root>
 </body>
