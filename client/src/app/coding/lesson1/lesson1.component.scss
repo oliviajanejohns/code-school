@@ -1,8 +1,23 @@
 .text{
-    color: white;
+    color: black;
 }
 
 .main{
-    padding: 15px;
+    padding-left: 15px;
     justify-content: space-between;
+    padding-right: 15px;
+
+}
+
+.lesson-title{
+    font-size: 18px;;
+    font-weight: 450;
+    line-height: 2rem;
+    color: #5648ff;
+}
+
+.lessonContent{
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.6;
 }
