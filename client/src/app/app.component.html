@@ -1,5 +1,4 @@
-<!-- This component displays the app header and footer -->
-<nav *ngIf="!currentUser" class="navbar navbar-expand-lg fixed-top" [ngClass] = "(scrolled ? 'bg-white' : 'navbar-transparent')" >
+<nav *ngIf="router.url === '/'" class="navbar navbar-expand-lg fixed-top" [ngClass] = "(scrolled ? 'bg-white' : 'navbar-transparent')" >
   <div class="container underline"> 
   <a class="navbar-brand col-9" [ngClass] = "(scrolled ? 'title' : 'title-transparent')" href="/">Code Space</a>
   <button class="navbar-toggler" [ngClass]="(scrolled ? 'navbar-light' : 'navbar-dark')" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,19 +9,18 @@
     <nav aria-label="links">
         <ul class="nav navbar-nav navbar-right">
             <li class="nav-item navbar-right">
-              <a *ngIf="!currentUser"  class="nav-link" [ngClass] = "(scrolled ? 'logIn' : 'logIn-transparent')" (click)="openLoginModal()">Log In </a>
+              <a *ngIf="router.url === '/'"  class="nav-link" [ngClass] = "(scrolled ? 'logIn' : 'logIn-transparent')" (click)="openLoginModal()">Log In </a>
           </li>
           <li class="nav-item navbar-right">
-            <a *ngIf="!currentUser" class="nav-link" [ngClass] = "(scrolled ? 'signUp' : 'signUp-transparent')" (click)="openSignupModal()">Sign Up</a>
+            <a *ngIf="router.url === '/'" class="nav-link" [ngClass] = "(scrolled ? 'signUp' : 'signUp-transparent')" (click)="openSignupModal()">Sign Up</a>
           </li>
         </ul>
     </nav>
   </div>
   </div>
-</nav>
+</nav> 
 
-<!-- This component displays the app header and footer -->
-<nav *ngIf="currentUser" class="navbar navbar-expand-lg fixed-top bg-white noBorder">
+<nav *ngIf="router.url != '/'" class="navbar navbar-expand-lg fixed-top bg-white">
     <div class="container underline"> 
     <a class="navbar-brand col-9 title" href="/dashboard">Code Space</a>
     <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,13 +37,12 @@
     </div>
     </div>
   </nav>
-  
 
 <router-outlet></router-outlet>
 
 <!-- Footer -->
 <footer class = "bg-dark">
-  <div class="container space-2">
+  <div class="container space-2 footer navbar-fixed-bottom">
       <div class="text-center footer">All rights reserved. © Code Space </div>
   </div>
 </footer>

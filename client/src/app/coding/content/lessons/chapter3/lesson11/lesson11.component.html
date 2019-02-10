@@ -1,0 +1,26 @@
+<div class="main">
+  <div class="content">
+    <p class ="text lesson-title">
+      Chapter 3: Python Sorting
+    </p>
+    <div class="text learn">
+      <p class="lessonContent">
+        The easiest way to sort is with the sorted(list) function, which takes a list and returns a new list with those elements in sorted order. The original list is not changed.
+      </p>
+      <p class="exampleCode">
+        a = [5, 1, 4, 3] <br>
+        print sorted(a)  ## [1, 3, 4, 5]<br>
+        print a  ## [5, 1, 4, 3]
+      </p>
+      <p class="lessonContent">
+        It's most common to pass a list into the sorted() function, but in fact it can take as input any sort of iterable collection. The older list.sort() method is an alternative detailed below. The sorted() function seems easier to use compared to sort(), so I recommend using sorted().
+        The sorted() function can be customized through optional arguments. The sorted() optional argument reverse=True, e.g. sorted(list, reverse=True), makes it sort backwards.      
+      </p>
+      <p class="exampleCode">
+        strs = ['aa', 'BB', 'zz', 'CC']<br>
+        print sorted(strs)  ## ['BB', 'CC', 'aa', 'zz'] (case sensitive)<br>
+        print sorted(strs, reverse=True)   ## ['zz', 'aa', 'CC', 'BB']<br>
+      </p>       
+    </div>
+  </div>
+</div>

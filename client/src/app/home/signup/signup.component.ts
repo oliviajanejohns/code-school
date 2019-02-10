@@ -32,6 +32,8 @@ export class SignupComponent {
 
   signUp() {
     if(this.user.email && this.user.username && this.user.password){
+      this.user.level = 0;
+      this.user.points = 0;
       this.userService.create(this.user)
           .subscribe(
               data => {

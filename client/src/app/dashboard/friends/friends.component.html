@@ -1,0 +1,32 @@
+<div class="#addfriend-modal" id="addfriend-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Friends</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        Please enter an email address below to add a user as a friend
+        <div class = "col-12 search">  
+          <!-- Search form -->
+          <!-- <form class="form-inline active">
+              <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search" aria-label="Enter user's email here..."  [(ngModel)]="queryString" id="search">
+              <div *ngFor="let user of users | FilterPipe: queryString">
+                  {{user.email}}
+              </div>
+          </form> -->
+            <input [(ngModel)]="asyncSelected"
+              [typeaheadAsync]="true"
+              [typeahead]="dataSource"
+              (typeaheadOnSelect)="typeaheadOnSelect($event)"
+              [typeaheadOptionsLimit]="7"
+              typeaheadOptionField="user.email"
+              placeholder="Enter a user's email here below..."
+              class="form-control col-12">
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  

@@ -3,6 +3,8 @@ export class User {
     name: string;
     email: string;
     username: string;
-    level: string;
+    points: number;
+    level: number;
     password: string;
+    friends: string[];
 }

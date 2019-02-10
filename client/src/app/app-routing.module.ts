@@ -15,7 +15,7 @@ const routes: Routes = [
     { path: 'chat', component: ChatComponent, canActivate: [AuthGuard] },
     { path: 'dashboard/settings', component: SettingsComponent, canActivate: [AuthGuard]},
       // otherwise redirect to home
-    { path: '**', redirectTo: '' }
+    // { path: '**', redirectTo: '' }
   ];
 
 @NgModule({

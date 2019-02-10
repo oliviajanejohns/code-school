@@ -76,16 +76,17 @@
 
         }
         window.onload = function() {
-                editor = CodeMirror.fromTextArea(document.getElementById('textbox'), {
+            editor = CodeMirror.fromTextArea(document.getElementById('textbox'), {
                     mode: {
                         name: "python",
-                        version: 3.2,
+                        version: 2.2,
                         singleLineStringErrors: false
                     },
                     lineNumbers: true,
                     theme: "material",
-                    indentUnit: 4,
+                    indentUnit: 2,
                     readOnly: false,
+                    fontSize: 12
                 });
         }
         Sk.onAfterImport = function(library) {
@@ -115,8 +116,9 @@
 
         function check() {
             value = editor.getValue();
-            if (value == 'print "hi"'){
+            if (value.contains == 'OK'){
                 runit();
+                editor.setValue('# Please enter code here');
 
             }
         }

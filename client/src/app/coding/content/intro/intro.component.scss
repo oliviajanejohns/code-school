@@ -1,0 +1,60 @@
+.text{
+    color: black;
+}
+
+.main{
+    padding-left: 15px;
+    justify-content: space-between;
+    padding-right: 15px;
+    height: 100%;
+}
+
+.lesson-title{
+    font-size: 18px;;
+    font-weight: 450;
+    line-height: 2rem;
+    color: #5648ff;
+}
+
+.lessonContent{
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.exampleCode{
+    font-size: 13px;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #f7f7f7;
+}
+
+.learn{
+    overflow: auto !important;
+    max-height: 30vh !important;   
+    height: 30vh !important; 
+}
+
+.subheadingContent{
+    overflow: auto !important;
+    max-height: 11vh !important;    
+}
+
+
+@media (min-width: 1000px) {
+    .learn{
+        overflow: auto !important;
+        max-height: 33vh !important;  
+        height: 33vh !important;  
+    }
+    .subheadingContent{
+        overflow: auto !important;
+        max-height: 25vh !important;  
+        height: 25vh;  
+  
+    }
+    .content{
+        height: 40vh;
+    }
+}
+
+

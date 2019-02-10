@@ -19,17 +19,23 @@ export class CodingComponent {
   public count = 0;
 
   next(){
-    if(this.count<11){
+    if(this.count<20){
       this.count++;
       console.log(this.count);
     }
   }
 
   back(){
-    if(this.count>=0){
+    if(this.count>=1){
       this.count--;
       console.log(this.count);
     }
+  }
+  
+  mainContent = '';
+
+  setContent(value) {
+    this.mainContent = value;
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, Inject, HostListener } from '@angular/core';
+import { Component, Inject, HostListener, OnInit } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { DOCUMENT } from "@angular/platform-browser";
 import { LoginComponent } from './home/login/login.component';
@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit{
   modalRef: BsModalRef;
   title = 'code-space';
   public scrolled: boolean = true;
@@ -38,6 +38,10 @@ export class AppComponent {
     } else {
         this.scrolled = false;
     }
+  }
+
+  ngOnInit(){
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   logout() {

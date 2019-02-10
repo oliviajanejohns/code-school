@@ -1,7 +1,7 @@
 
 #wrapper {
     display: flex;
-    position: relative;
+    margin-top: 56px;
   }
   
   #wrapper #content-wrapper {
@@ -33,6 +33,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
     }
   }
   
+
   .navbar-nav .form-inline .input-group {
     width: 100%;
   }
@@ -252,7 +253,9 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   position: relative;
   display: flex;
   border-radius: 0.25rem;
-  margin-bottom: 40px
+  margin-bottom: 40px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.15);
+
 }
 
 
@@ -281,4 +284,23 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
 .confirm{
   font-weight: 300;
   font-size: 15px;
+}
+
+.container-fluid{
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+
+@media (max-width: 768px) {
+  .userInfo {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .mobile {
+    display: none;
+  }
 }

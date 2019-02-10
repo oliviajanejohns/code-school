@@ -5,19 +5,19 @@
         Menu
     </li>
     <li class="nav-item">
-      <a class="nav-link active" href="/dashboard/">
+      <a class="nav-link active" href="/dashboard">
         <span data-feather="home"></span>
         Dashboard <span class="sr-only">(current)</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="/coding/">
+      <a class="nav-link" href="/coding">
         <span data-feather=""></span>
         Code
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="/chat/">
+      <a class="nav-link" href="/chat">
         <span data-feather=""></span>
         Chat
       </a>
@@ -32,30 +32,28 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/dashboard/settings/">
+        <a class="nav-link" href="/dashboard/settings">
           <span data-feather=""></span>
           Settings
         </a>
     </li>
   </ul>
-
     <!-- Main Content -->
     <div id="content-wrapper">
       <div class="container-fluid">
-
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
               <a href="/dashboard">Dashboard</a>
             </li>
           </ol>
-          
+
         <!-- Welcome message -->
         <div class="row">
           <div class="col-12">
             <div class="gradient"> 
               <div class="about col-8">
-                <div class="col-4 avatar">
+                <div class="col-4 avatar userInfo"> 
 
                 </div>
                 <div class="col-8 description">
@@ -68,11 +66,11 @@
                 </div>
               </div>
               <div class="col-4 description">
-                <div class="message">
+                <div class="message userInfo">
                   Level 1
                 </div>
-                <div class="user">
-                  1500 points
+                <div class="user userInfo">
+                  {{currentUser.points}}
                 </div>
               </div>
             </div>
@@ -88,14 +86,13 @@
         </div>
         <div class="card col-12">
           <div class="card-body">
-            <h5 class="card-title text">Learn Python 2</h5>
+            <h5 class="card-title text">Python 2</h5>
             <p class="card-text label">Python is one the three most popular interpreted languages. Taught in numerous schools globally</p>
             <p class="card-text label italic">Content Covered: Introduction to Python, Strings, Lists, Sorting, Dicts and Files, Regular Expressions </p>
-            <button type="button" class="btn btn-lg btn-primary confirm" [routerLink]="['/coding']"><span>Code</span></button>
+            <button type="button" class="btn btn-lg btn-primary confirm" (click)="coding()"><span>Start</span></button>
           </div>
         </div>
-
-         <!-- Friends
+         <!-- Friends -->
         <div class="row chat">
           <div class="col-12">
             <h4 class="text">
@@ -105,27 +102,25 @@
         </div>
         <div class="card col-12">
           <div class="card-body">
-             <h5 class="card-title">Chat</h5> 
-            <p class="card-text"> You can become friends with other members by following each other or inviting new friends to join Code Space.</p>
-
-            <table class="table table-striped">
+            <p class="card-text label"> You can become friends with other members by following each other or inviting new friends to join Code Space.</p>
+            <table class="table table-striped mobile">
                 <thead>
                   <tr>
-                    <th scope="col">Position</th>
-                    <th scope="col">Username</th>
-                    <th scope="col">Level</th>
+                    <th scope="col text">Position</th>
+                    <th scope="col text">Username</th>
+                    <th scope="col text">Points</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th *ngFor="let user of users" scope="row"></th>
+                  <tr class="label" *ngFor="let user of users let count = index" scope="row">
+                    <td>{{ count }}</td>
                     <td>{{user.username}}</td>
-                    <td>{user.level}</td>
-                    <td>position</td>
+                    <td>{{user.points}}</td>
                   </tr>
                 </tbody>
               </table>
+              <button type="button" class="btn btn-lg btn-primary confirm" (click)="openFriendsModal()"><span>Add Friends</span></button>
           </div>
-        </div>  -->
+        </div> 
     </div>
 </div>

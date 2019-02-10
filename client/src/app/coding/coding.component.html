@@ -1,22 +1,51 @@
 <div class="code">
     <div class="split-view">
         <!-- LESSON -->
-        <div class="col-5 gradient">
-            <ol _ngcontent-c1="" class="breadcrumb"><li _ngcontent-c1="" class="breadcrumb-item lessonTitle">Introducing Python</li></ol>            
-            <!-- <app-intro class="" *ngIf="count==0"></app-intro> -->
-            <app-lesson1  *ngIf="count==1"></app-lesson1>
-            <app-lesson2 *ngIf="count==2"></app-lesson2>
-            <app-lesson3 *ngIf="count==3"></app-lesson3>
-            <app-lesson4 *ngIf="count==4"></app-lesson4>
-            <app-lesson5 *ngIf="count==5"></app-lesson5>
-            <app-lesson6 *ngIf="count==6"></app-lesson6>
-            <app-lesson7 *ngIf="count==7"></app-lesson7>
-            <app-lesson8 *ngIf="count==8"></app-lesson8>
-            <app-lesson9 *ngIf="count==9"></app-lesson9>
-            <app-lesson10 *ngIf="count==10"></app-lesson10>
+        <div class="col-5 noPad">
+            <div class="gradient">
+                <ol _ngcontent-c1="" class="breadcrumb"><li _ngcontent-c1="" class="breadcrumb-item lessonTitle">Introducing Python</li></ol>            
+                <app-intro class="" *ngIf="count==0"></app-intro>
+                <!-- CHAPTER 1 -->
+                <app-lesson1 *ngIf="count==1"></app-lesson1>
+                <app-lesson2 *ngIf="count==2"></app-lesson2>
+                <app-lesson3 *ngIf="count==3"></app-lesson3>
+                <app-lesson4 *ngIf="count==4"></app-lesson4>
+                <app-lesson5 *ngIf="count==5"></app-lesson5>
+                <app-exercise1 *ngIf="count==6"></app-exercise1>
+                
+                <!-- CHAPTER 2 -->
+                <app-lesson6 *ngIf="count==7"></app-lesson6>
+                <app-lesson7 *ngIf="count==8"></app-lesson7>
+                <app-lesson8 *ngIf="count==9"></app-lesson8>
+                <app-lesson9 *ngIf="count==10"></app-lesson9>
+                <app-lesson10 *ngIf="count==11"></app-lesson10>
+                <app-exercise2 *ngIf="count==12"></app-exercise2>
 
-            <div class="footer-code">
+                <!-- CHAPTER 3 -->
+                <app-lesson11 *ngIf="count==13"></app-lesson11>
+                <app-lesson12 *ngIf="count==14"></app-lesson12>
+                <app-lesson13 *ngIf="count==15"></app-lesson13>
+                <app-lesson14 *ngIf="count==16"></app-lesson14>
+                <app-exercise3 *ngIf="count==17"></app-exercise3>
+
+                <!-- CHAPTER 4 -->
+                <app-lesson15 *ngIf="count==18"></app-lesson15>
+                <app-lesson16 *ngIf="count==19"></app-lesson16>
+                <app-lesson17 *ngIf="count==20"></app-lesson17>
+                <app-lesson18 *ngIf="count==21"></app-lesson18>
+                <app-exercise4 *ngIf="count==22"></app-exercise4>
+
+                <!-- CHAPTER 5 -->
+                <app-lesson19 *ngIf="count==21"></app-lesson19>
+                <app-lesson20 *ngIf="count==22"></app-lesson20>
+                <app-lesson21 *ngIf="count==23"></app-lesson21>
+                <app-lesson22 *ngIf="count==24"></app-lesson22>
+                <app-lesson23 *ngIf="count==25"></app-lesson23>
+                <app-lesson24 *ngIf="count==26"></app-lesson24>
+            </div>
+            <div class="footer-code col-12">
                 <div class="container space-2">
+                    <hr>
                     <button type="button" class="btn btn-lg btn-primary back" (click)="back()"><span>Back</span></button>
                     <button type="button" class="btn btn-lg btn-primary next" (click)="next()"><span>Next</span></button>
                 </div>                  
@@ -24,31 +53,25 @@
         </div>
         <div class="col-7 column2">
             <div class="col-12 editor">
-                <!-- EDITOR -->
-                <!-- <div class="row">
-                <div class="col-12 navbar">
-                    Solution:
-                </div>
-                </div> -->
-                <!-- <ol _ngcontent-c1="" class="breadcrumb"><li _ngcontent-c1="" class="breadcrumb-item lessonTitle">Solution</li></ol>             -->
-
-                <textarea id="textbox" name="textbox" rows="4" cols="50">
+               <textarea id="textbox" name="textbox" rows="4" cols="50">
 # Please enter code here
 </textarea>
-                <div class="footer-code">
+            </div> 
+            <div class = "selectors">
+                <div class="footer-code pad">
                     <button type="button" class="btn btn-lg btn-primary run" onclick="runit()"><span>Run</span></button>
                     <button type="button" class="btn btn-lg btn-secondary reset" onclick="check()"><span>Check</span></button>
                     <button type="button" class="btn btn-lg btn-light reset" onclick="reset()"><span>Reset</span></button>
-
-                </div>
-            </div>  
+                </div> 
+            </div>
+            <hr class="divider">
 
             <!-- TERMINAL -->
             <div class="terminal">
                 <div class="col-12">
                     <pre id="output" class="main"></pre> 
                 </div>
-            </div>
+             </div>
         </div>
     </div> 
 </div>
