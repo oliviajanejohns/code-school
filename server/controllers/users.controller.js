@@ -3,13 +3,26 @@ var router = express.Router();
 var userService = require('services/user.service');
 
 // routes
+router.put('/friends/', addFriend);
 router.post('/authenticate', authenticate);
 router.post('/register', register);
 router.get('/current', getCurrent);
 router.put('/:_id', update);
 router.delete('/:_id', _delete);
+router.get('/:_id', getFriends);
+router.get('/', getAll);
 
 module.exports = router;
+
+function addFriend(req, res) {
+    userService.addFriend(req.body._id, req.body.friends)
+        .then(function () {
+            res.json('success');
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
 
 function authenticate(req, res) {
     userService.authenticate(req.body.username, req.body.password)
@@ -52,6 +65,26 @@ function getCurrent(req, res) {
         });
 }
 
+function getFriends(req, res) {
+    userService.getFriends(req.params._id, req.body)
+        .then(function (users) {
+            res.send(users);
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
+
+function getAll(req, res) {
+    userService.getAll()
+        .then(function (users) {
+            res.send(users);
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
+
 function update(req, res) {
     userService.update(req.params._id, req.body)
         .then(function () {
@@ -71,3 +104,4 @@ function _delete(req, res) {
             res.status(400).send(err);
         });
 }
+

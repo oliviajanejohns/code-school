@@ -10,11 +10,13 @@ db.bind('users');
 var service = {};
 
 service.authenticate = authenticate;
-service.getAll = getAll;
+service.getFriends = getFriends;
 service.getById = getById;
 service.create = create;
 service.update = update;
 service.delete = _delete;
+service.getAll = getAll;
+service.addFriend = addFriend;
 
 module.exports = service;
 
@@ -32,6 +34,7 @@ function authenticate(username, password) {
                 email: user.email,
                 level: user.level,
                 name: user.name,
+                points: user.points,
                 token: jwt.sign({ sub: user._id }, config.secret)
             });
         } else {
@@ -40,6 +43,40 @@ function authenticate(username, password) {
         }
     });
 
+    return deferred.promise;
+}
+
+function getFriends(_id) {
+    var deferred = Q.defer();
+    var usersArray = [];
+
+    db.users.findById(_id, function (err, user) {
+        if (err) deferred.reject(err.name + ': ' + err.message);
+
+        if(user){
+            if (user.friends instanceof Array) {
+                var array = user.friends;
+                var callbacks = array.length; // how many call backs are expected
+                user.friends.forEach(function (email) {
+                    db.users.findOne({email : email}, function(err, user) {
+                        --callbacks;
+                        if (err) {
+                            deferred.reject(err);
+                        }
+                        else { 
+                            if (user){
+                                usersArray.push(_.omit(user, 'hash', 'friends'));
+                            }
+                            if (callbacks == 0){
+                                deferred.resolve(usersArray);
+                                return usersArray;
+                            }
+                        }
+                    });
+                }); // end of forEach
+            } // end of array
+        } // end of if user
+    }); // end of db.users.findbyId
     return deferred.promise;
 }
 
@@ -114,6 +151,30 @@ function create(userParam) {
     return deferred.promise;
 }
 
+function addFriend(_id, friends) {
+
+    var deferred = Q.defer();
+
+    db.users.findOne({email : friends}, function (err, user) {
+        if (err) deferred.reject(err.name + ': ' + err.message);
+        if(user){
+            console.log(user);
+            db.users.update(
+                { _id: mongo.helper.toObjectID(_id) },
+                { $push: { friends: friends } } ,
+                function (err, doc) {
+                    if (err) deferred.reject(err.name + ': ' + err.message);
+                    deferred.resolve();
+                }
+            );
+            return deferred.promise;
+        }
+    });
+
+   
+}
+
+
 function update(_id, userParam) {
     var deferred = Q.defer();
 
@@ -147,6 +208,7 @@ function update(_id, userParam) {
             username: userParam.username,
             name: userParam.name,
             level: userParam.level,
+            points: userParam.points,
         };
 
         // update password if it was entered
@@ -180,3 +242,4 @@ function _delete(_id) {
 
     return deferred.promise;
 }
+
