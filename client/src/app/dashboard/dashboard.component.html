@@ -66,11 +66,11 @@
                 </div>
               </div>
               <div class="col-4 description">
-                <div class="message userInfo">
-                  Level 1
-                </div>
                 <div class="user userInfo">
-                  {{currentUser.points}}
+                  Level: {{currentUser.level}}
+                </div>
+                <div class="message userInfo">
+                  Points: {{currentUser.points}}
                 </div>
               </div>
             </div>
@@ -113,7 +113,7 @@
                 </thead>
                 <tbody>
                   <tr class="label" *ngFor="let user of users let count = index" scope="row">
-                    <td>{{ count }}</td>
+                    <td>{{ count + 1}}</td>
                     <td>{{user.username}}</td>
                     <td>{{user.points}}</td>
                   </tr>

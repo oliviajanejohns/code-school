@@ -5,6 +5,7 @@ export class User {
     username: string;
     points: number;
     level: number;
+    page: number;
     password: string;
     friends: string[];
 }

@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit{
   currentUser: User;
   users: User[] = [];
   sortedArray: User[] = [];
-
+  user: User;
 
   // count = 0;
   mobile = false;

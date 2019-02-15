@@ -41,4 +41,10 @@ export class UserService {
       localStorage.setItem('currentUser', JSON.stringify(user));
       return this.http.put(appConfig.apiUrl + '/users/friends/', { _id: user._id, friends: email });
     }
+
+    getNonFriends(user: User ){
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      return this.http.get<User[]>(appConfig.apiUrl + '/users/search/' + user._id);
+
+    }
 }

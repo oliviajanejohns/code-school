@@ -46,11 +46,11 @@ export class FriendsComponent implements OnInit{
   }
 
   typeaheadOnSelect(e: TypeaheadMatch): void {
-    // this.currentUser.friends.push(e.value);
-    console.log(this.currentUser.friends);
     this.userService.addFriend(this.currentUser, e.value).subscribe(
       data => {
       this.router.navigate(['/dashboard']);
+        this.close();
+        window.location.reload();
       });;
   }
     
@@ -59,7 +59,7 @@ export class FriendsComponent implements OnInit{
   }
 
   ngOnInit(){
-    this.userService.getAll().subscribe(users => {this.users = users});
+    this.userService.getNonFriends(this.currentUser).subscribe(users => {this.users = users});
   }
 }
 
