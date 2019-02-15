@@ -11,6 +11,7 @@ router.put('/:_id', update);
 router.delete('/:_id', _delete);
 router.get('/:_id', getFriends);
 router.get('/', getAll);
+router.get('/search/:_id', getNonFriends);
 
 module.exports = router;
 
@@ -18,6 +19,17 @@ function addFriend(req, res) {
     userService.addFriend(req.body._id, req.body.friends)
         .then(function () {
             res.json('success');
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
+
+
+function getNonFriends(req, res) {
+    userService.getNonFriends(req.params._id)
+        .then(function (users) {
+            res.send(users);
         })
         .catch(function (err) {
             res.status(400).send(err);
@@ -36,9 +48,9 @@ function authenticate(req, res) {
                 res.status(400).send('Username or password is incorrect');
             }
         })
-        // .catch(function (err) {
-        //     res.status(400).send(err);
-        // });
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
 }
 
 function register(req, res) {

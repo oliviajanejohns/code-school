@@ -17,8 +17,27 @@ service.update = update;
 service.delete = _delete;
 service.getAll = getAll;
 service.addFriend = addFriend;
+service.getNonFriends = getNonFriends;
 
 module.exports = service;
+// friends : {$ne : user.email}}
+function getNonFriends(_id) {
+    var deferred = Q.defer();
+
+            db.users.findById(_id, function (err, user) {
+                if (err) deferred.reject(err.name + ': ' + err.message);
+                if(user){
+                    db.users.find({$and: [ { friends : {$ne : user.email}}, { email : {$ne : user.email}} ] }).toArray(function(err, users) {
+                        // return users (without hashed passwords)
+                        users = _.map(users, function (user) {
+                            return _.omit(user, 'hash');
+                        });
+                        deferred.resolve(users);
+                    });
+                }
+            });
+    return deferred.promise;
+}
 
 function authenticate(username, password) {
     var deferred = Q.defer();
@@ -35,6 +54,7 @@ function authenticate(username, password) {
                 level: user.level,
                 name: user.name,
                 points: user.points,
+                page: user.page,
                 token: jwt.sign({ sub: user._id }, config.secret)
             });
         } else {
@@ -158,20 +178,18 @@ function addFriend(_id, friends) {
     db.users.findOne({email : friends}, function (err, user) {
         if (err) deferred.reject(err.name + ': ' + err.message);
         if(user){
-            console.log(user);
             db.users.update(
                 { _id: mongo.helper.toObjectID(_id) },
-                { $push: { friends: friends } } ,
+                { $addToSet: { friends: friends } } ,
                 function (err, doc) {
                     if (err) deferred.reject(err.name + ': ' + err.message);
+                    
                     deferred.resolve();
                 }
             );
-            return deferred.promise;
         }
     });
-
-   
+    return deferred.promise;
 }
 
 
@@ -206,9 +224,7 @@ function update(_id, userParam) {
         var set = {
             email: userParam.email,
             username: userParam.username,
-            name: userParam.name,
-            level: userParam.level,
-            points: userParam.points,
+            name: userParam.name
         };
 
         // update password if it was entered
