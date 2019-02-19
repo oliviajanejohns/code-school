@@ -269,6 +269,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
 
 .help{
   color: #21c87a !important;
+  cursor: pointer;
 }
 
 .pad{
@@ -282,6 +283,10 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
 
 .details{
   margin: 20px;
+}
+
+.space{
+  padding-right: 5px;
 }
 
 .update{

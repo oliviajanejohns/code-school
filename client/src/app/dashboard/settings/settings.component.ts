@@ -4,6 +4,7 @@ import { HelpComponent } from '../help/help.component';
 import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { DeleteComponent } from './delete/delete.component';
 
 @Component({
   selector: 'app-settings',
@@ -25,18 +26,17 @@ export class SettingsComponent {
   openModal() {
     this.modalRef = this.modalService.show(HelpComponent);
   }
+
+  openDeleteModal() {
+    this.modalRef = this.modalService.show(DeleteComponent);
+  }
+  
   
   editUser() {
     this.userService.update(this.currentUser).subscribe(
       data => {
       this.router.navigate(['/dashboard']);
       });
-  }
-
-  deleteUser(_id: string) {
-    this.userService.delete(_id).subscribe(data => {
-      this.router.navigate(['/']);
-    });
   }
 
 }
