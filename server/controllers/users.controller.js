@@ -4,6 +4,7 @@ var userService = require('services/user.service');
 
 // routes
 router.put('/friends/', addFriend);
+router.put('/addPage', addPage);
 router.post('/authenticate', authenticate);
 router.post('/register', register);
 router.get('/current', getCurrent);
@@ -25,6 +26,15 @@ function addFriend(req, res) {
         });
 }
 
+function addPage(req, res) {
+    userService.addPage(req.body._id, req.body.page)
+        .then(function () {
+            res.json('success');
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
 
 function getNonFriends(req, res) {
     userService.getNonFriends(req.params._id)
