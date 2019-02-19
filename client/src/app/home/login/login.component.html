@@ -1,7 +1,7 @@
 <div class="#login-modal" id="login-modal">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title">Welcome back</h5>
+      <h5 class="modal-title popupTitle">Welcome back</h5>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close()">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -11,7 +11,7 @@
         <div class="form-group">
             <div class="input-group">
                 <div class="input-group-addon">
-                  <span class="glyphicon glyphicon-user"></span> 
+                  <!-- <i class="fa fa-user" aria-hidden="true"></i> -->
                 </div>
                 <input name="username" type="text" [(ngModel)]="user.username" class="form-control text-center" id="inputUsername" placeholder="Username" required>
             </div>     

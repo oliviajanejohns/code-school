@@ -3,7 +3,9 @@ import { User } from '../models/user.model';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 
-// declare function runit(): any;
+declare function check1(): any;
+declare function resetDefault(): any;
+declare const result: any;
 
 @Component({
   selector: 'coding-component',
@@ -25,8 +27,32 @@ export class CodingComponent implements OnInit{
   
   ngOnInit(){ 
     this.count = this.currentUser.page;
-    const correct: boolean = false;
-    console.log(this.currentUser.page);
+  }
+
+  checkCode(){
+    if(this.count==6){
+      check1();
+      if(check1()){
+        console.log("")
+        result == true;
+        this.count=7;
+        console.log(this.count);
+      }
+      else{
+        this.count=6;
+        console.log("hi");
+        console.log(this.count);
+      }
+    }
+  }
+
+  reset(){
+    if(this.count==6){
+      window.location.reload();
+    }
+    else{
+      resetDefault();
+    }
   }
 
 
@@ -34,21 +60,21 @@ export class CodingComponent implements OnInit{
     const level = this.currentUser.level;
     switch(level){
       case 1: {  
-        if(this.count >=0 && this.count <=5){
+        if(this.count >=0 && this.count <=4){
             this.count++;
-            console.log(this.count);
         }
-        else {
-          this.count == 6;
-          // this.editUser();
+        else if(this.count == 5){
+            this.count++;
+            this.currentUser.page = 6;
+            this.edit(this.currentUser, this.count); 
         }
       }
       case 2: {
         if(this.count >=7 && this.count <=11){
-          this.count++;
+            this.count++;
         }
         else {
-          this.count == 12;
+            this.count == 12;
         }
       }
 
@@ -61,8 +87,6 @@ export class CodingComponent implements OnInit{
       case 1: {  
         if(this.count>=0 && this.count <=5){
             this.count--;
-            console.log(this.count);
-
         }
         else {
           this.count == 6;
@@ -86,10 +110,11 @@ export class CodingComponent implements OnInit{
     this.mainContent = value;
   }
 
-  // editUser() {
-  //   this.userService.update(this.currentUser).subscribe(
-  //     data => {
-  //     this.router.navigate(['/coding']);
-  //     });
-  //   }
+  edit(currentUser: User, count: number) {
+    this.userService.addPage(currentUser, count).subscribe(
+      data => {
+        window.location.reload();
+      })       
+        this.count++;
+  }
 }

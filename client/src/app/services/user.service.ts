@@ -1,16 +1,13 @@
 import { Injectable } from '@angular/core';
-import { User } from '../models/user.model';
 import { HttpClient } from '@angular/common/http';
+
 import { appConfig } from '../app.config';
+import { User } from '../models/user.model';
 
-@Injectable({
-  providedIn: 'root'
-})
-
+@Injectable()
 export class UserService {
-
     constructor(private http: HttpClient) { }
-    
+
     create(user: User) {
       return this.http.post(appConfig.apiUrl + '/users/register', user);
     }
@@ -24,7 +21,7 @@ export class UserService {
       return this.http.put(appConfig.apiUrl + '/users/' + user._id, user);
     }
 
-    delete(_id: string) {
+    delete(_id: String) {
       return this.http.delete(appConfig.apiUrl + '/users/' + _id);
     }
 
@@ -42,9 +39,13 @@ export class UserService {
       return this.http.put(appConfig.apiUrl + '/users/friends/', { _id: user._id, friends: email });
     }
 
-    getNonFriends(user: User ){
+    addPage(user: User, count: number) {      
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      return this.http.put(appConfig.apiUrl + '/users/addPage', { _id: user._id , page: count });
+    }
+
+    getNonFriends(user: User){
       localStorage.setItem('currentUser', JSON.stringify(user));
       return this.http.get<User[]>(appConfig.apiUrl + '/users/search/' + user._id);
-
     }
 }

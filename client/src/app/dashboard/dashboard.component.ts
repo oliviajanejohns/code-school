@@ -18,8 +18,8 @@ export class DashboardComponent implements OnInit{
   sortedArray: User[] = [];
   user: User;
 
-  // count = 0;
   mobile = false;
+  count: number;
 
   constructor
   (
@@ -32,6 +32,7 @@ export class DashboardComponent implements OnInit{
   
   ngOnInit(){
     this.loadFriends(this.currentUser);
+    this.count = 0;
   }
 
   private loadFriends(user: User) {
@@ -52,6 +53,18 @@ export class DashboardComponent implements OnInit{
 
   openFriendsModal(){
     this.modalRef = this.modalService.show(FriendsComponent);
+  }
+
+  reset(){
+    this.currentUser.page = this.count;
+    this.edit(this.currentUser, this.count);
+    this.router.navigate(['/coding']);
+  }
+
+  edit(currentUser: User, count: number) {
+    this.userService.addPage(currentUser, count).subscribe(
+      data => {
+      })       
   }
 }
 

@@ -106,7 +106,8 @@
     background-color: #131414 !important;
     padding:15px;
     height: calc(35% - 1rem - 2px) !important;
-    border-radius: 0.3rem
+    border-radius: 0.3rem;
+    font-size: 14px;
 }
 
 #output{
@@ -125,6 +126,7 @@
 
 .pad{
     padding-right: 10px !important;
+    z-index: 100;
 }
 
 .separatorPad{

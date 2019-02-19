@@ -6,34 +6,34 @@
     </li>
     <li class="nav-item">
       <a class="nav-link active" href="/dashboard">
-        <span data-feather="home"></span>
+        <i class="fa fa-tachometer colorActive" aria-hidden="true"></i>
         Dashboard <span class="sr-only">(current)</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="/coding">
-        <span data-feather=""></span>
+        <i class="fa fa-laptop color" aria-hidden="true"></i>
         Code
       </a>
     </li>
-    <li class="nav-item">
+    <!-- <li class="nav-item">
       <a class="nav-link" href="/chat">
         <span data-feather=""></span>
         Chat
       </a>
-    </li>
+    </li> -->
     <li class="nav-item divider">
         More
     </li>
     <li class="nav-item">
         <a class="nav-link help" (click)="openModal()">
-          <span data-feather=""></span>
+          <i class="fa fa-question-circle color" aria-hidden="true"></i>
           Help
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="/dashboard/settings">
-          <span data-feather=""></span>
+          <i class="fa fa-cog color" aria-hidden="true"></i>
           Settings
         </a>
     </li>
@@ -87,9 +87,22 @@
         <div class="card col-12">
           <div class="card-body">
             <h5 class="card-title text">Python 2</h5>
-            <p class="card-text label">Python is one the three most popular interpreted languages. Taught in numerous schools globally</p>
-            <p class="card-text label italic">Content Covered: Introduction to Python, Strings, Lists, Sorting, Dicts and Files, Regular Expressions </p>
-            <button type="button" class="btn btn-lg btn-primary confirm" (click)="coding()"><span>Start</span></button>
+            <div class="buttonSide">
+                <a class="btn btn-lg btn-primary confirm" href="/coding">                
+                  <i class="fa fa-play space" aria-hidden="true"></i>
+                  <span>Start</span>
+                </a>
+            </div>
+            <div class="section">
+              <p class="card-text label">Python is one the three most popular interpreted languages. Taught in numerous schools globally</p>
+              <p class="card-text label italic">Content Covered: Introduction to Python, Strings, Lists, Sorting, Dicts and Files, Regular Expressions </p>
+            </div>
+            <div class="secondaryButton">
+              <a class="btn btn-lg btn-light reset" (click)="reset()">
+                  <i class="fa fa-repeat colorActive space resetIcon" aria-hidden="true"></i>
+                <span>Reset</span>
+              </a>
+            </div>
           </div>
         </div>
          <!-- Friends -->
@@ -102,24 +115,31 @@
         </div>
         <div class="card col-12">
           <div class="card-body">
-            <p class="card-text label"> You can become friends with other members by following each other or inviting new friends to join Code Space.</p>
-            <table class="table table-striped mobile">
-                <thead>
-                  <tr>
-                    <th scope="col text">Position</th>
-                    <th scope="col text">Username</th>
-                    <th scope="col text">Points</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="label" *ngFor="let user of users let count = index" scope="row">
-                    <td>{{ count + 1}}</td>
-                    <td>{{user.username}}</td>
-                    <td>{{user.points}}</td>
-                  </tr>
-                </tbody>
-              </table>
-              <button type="button" class="btn btn-lg btn-primary confirm" (click)="openFriendsModal()"><span>Add Friends</span></button>
+            <p class="card-text label"> You can become friends with other members by adding each other below or inviting new friends to join Code Space.</p>
+            <div class ="table" *ngIf="users.length > 0">
+              <table class="table table-striped mobile">
+                  <thead>
+                    <tr>
+                      <th scope="col text">Position</th>
+                      <th scope="col text">Username</th>
+                      <th scope="col text">Points</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="label" *ngFor="let user of users let count = index" scope="row">
+                      <td>{{ count + 1}}</td>
+                      <td>{{user.username}}</td>
+                      <td>{{user.points}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class ="noFriends" *ngIf="users.length == 0">
+                <p class="card-text label italic"> Your friends list seems to be empty, please click the button below to add a user</p>
+              </div>
+              <button type="button" class="btn btn-lg btn-primary confirm" (click)="openFriendsModal()">
+                <i class="fa fa-users space" aria-hidden="true"></i>
+                <span>Add Friends</span></button>
           </div>
         </div> 
     </div>

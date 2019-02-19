@@ -54,6 +54,7 @@ import { Lesson24Component } from './coding/content/lessons/chapter5/lesson24/le
 import { Exercise2Component } from './coding/content/lessons/chapter2/exercise2/exercise2.component';
 import { Exercise3Component } from './coding/content/lessons/chapter3/exercise3/exercise3.component';
 import { Exercise4Component } from './coding/content/lessons/chapter4/exercise4/exercise4.component';
+import { DeleteComponent } from './dashboard/settings/delete/delete.component';
 
 
 @NgModule({
@@ -99,6 +100,7 @@ import { Exercise4Component } from './coding/content/lessons/chapter4/exercise4/
     Exercise2Component,
     Exercise3Component,
     Exercise4Component,
+    DeleteComponent,
 
     ],
   imports: [
@@ -126,7 +128,8 @@ import { Exercise4Component } from './coding/content/lessons/chapter4/exercise4/
     SignupComponent, 
     LoginComponent,
     HelpComponent,
-    FriendsComponent
+    FriendsComponent,
+    DeleteComponent
   ],
 })
 export class AppModule { }

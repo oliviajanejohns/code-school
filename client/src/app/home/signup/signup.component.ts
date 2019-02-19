@@ -35,6 +35,8 @@ export class SignupComponent {
       this.user.level = 1;
       this.user.points = 0;
       this.user.page = 0;
+      this.user.friends = [];
+
       this.userService.create(this.user)
           .subscribe(
               data => {

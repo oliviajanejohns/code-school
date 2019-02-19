@@ -237,6 +237,18 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   padding-left: 50px;
 }
 
+.colorActive{
+  color: #5648ff;
+}
+
+.color{
+  color: #21c87a;
+}
+
+.space{
+  padding-right: 5px;
+}
+
 .gradient{
   background-image: linear-gradient(135deg, #5648ff 0%, #21c87a 100%);
   background-position-x: initial;
@@ -255,9 +267,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   border-radius: 0.25rem;
   margin-bottom: 40px;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.15);
-
 }
-
 
 .text{
   color: black;
@@ -281,9 +291,42 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   font-weight: 300;
 }
 
+.buttonSide{
+  float: left;
+  padding-right: 1.5rem;
+  padding-top: 0.5rem;
+}
+
+.section{
+  margin-bottom: 2.5rem;
+  float: left;
+}
+
 .confirm{
   font-weight: 300;
-  font-size: 15px;
+  font-size: 16px;
+  color: white;
+}
+
+.noFriends{
+  margin-bottom: 1rem;
+}
+.secondaryButton{
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1rem;
+  align-items: center;
+}
+
+.reset{
+  font-weight: 300;
+  font-size: 13px;
+  display: flex;
+  cursor: pointer;
+  color: #5648ff !important;
+}
+.resetIcon{
+  padding-top: 3px;
 }
 
 .container-fluid{
