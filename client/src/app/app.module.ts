@@ -55,6 +55,7 @@ import { Exercise2Component } from './coding/content/lessons/chapter2/exercise2/
 import { Exercise3Component } from './coding/content/lessons/chapter3/exercise3/exercise3.component';
 import { Exercise4Component } from './coding/content/lessons/chapter4/exercise4/exercise4.component';
 import { DeleteComponent } from './dashboard/settings/delete/delete.component';
+import { AvatarModule } from 'ngx-avatar';
 
 
 @NgModule({
@@ -113,6 +114,7 @@ import { DeleteComponent } from './dashboard/settings/delete/delete.component';
     FormsModule,
     ReactiveFormsModule,
     TypeaheadModule.forRoot(),
+    AvatarModule
   ],
   providers: [   
     BsModalService,

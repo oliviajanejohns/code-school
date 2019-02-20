@@ -14,7 +14,7 @@ service.addPage = addPage;
 service.getFriends = getFriends;
 service.getById = getById;
 service.create = create;
-// service.update = update;
+service.update = update;
 service.delete = _delete;
 service.getAll = getAll;
 service.addFriend = addFriend;
@@ -211,57 +211,57 @@ function addFriend(_id, friends) {
 }
 
 
-// function update(_id, userParam) {
-//     var deferred = Q.defer();
+function update(_id, userParam) {
+    var deferred = Q.defer();
 
-//     // validation
-//     db.users.findById(_id, function (err, user) {
-//         if (err) deferred.reject(err.name + ': ' + err.message);
+    // validation
+    db.users.findById(_id, function (err, user) {
+        if (err) deferred.reject(err.name + ': ' + err.message);
 
-//         if (user.username !== userParam.username) {
-//             // username has changed so check if the new username is already taken
-//             db.users.findOne(
-//                 { username: userParam.username },
-//                 function (err, user) {
-//                     if (err) deferred.reject(err.name + ': ' + err.message);
+        if (user.username !== userParam.username) {
+            // username has changed so check if the new username is already taken
+            db.users.findOne(
+                { username: userParam.username },
+                function (err, user) {
+                    if (err) deferred.reject(err.name + ': ' + err.message);
 
-//                     if (user) {
-//                         // username already exists
-//                         deferred.reject('Username "' + req.body.username + '" is already taken')
-//                     } else {
-//                         updateUser();
-//                     }
-//                 });
-//         } else {
-//             updateUser();
-//         }
-//     });
+                    if (user) {
+                        // username already exists
+                        deferred.reject('Username "' + req.body.username + '" is already taken')
+                    } else {
+                        updateUser();
+                    }
+                });
+        } else {
+            updateUser();
+        }
+    });
 
-//     function updateUser() {
-//         // fields to update
-//         var set = {
-//             email: userParam.email,
-//             username: userParam.username,
-//             name: userParam.name
-//         };
+    function updateUser() {
+        // fields to update
+        var set = {
+            email: userParam.email,
+            username: userParam.username,
+            name: userParam.name
+        };
 
-//         // update password if it was entered
-//         if (userParam.password) {
-//             set.hash = bcrypt.hashSync(userParam.password, 10);
-//         }
+        // update password if it was entered
+        if (userParam.password) {
+            set.hash = bcrypt.hashSync(userParam.password, 10);
+        }
 
-//         db.users.update(
-//             { _id: mongo.helper.toObjectID(_id) },
-//             { $set: set },
-//             function (err, doc) {
-//                 if (err) deferred.reject(err.name + ': ' + err.message);
+        db.users.update(
+            { _id: mongo.helper.toObjectID(_id) },
+            { $set: set },
+            function (err, doc) {
+                if (err) deferred.reject(err.name + ': ' + err.message);
 
-//                 deferred.resolve();
-//             });
-//     }
+                deferred.resolve();
+            });
+    }
 
-//     return deferred.promise;
-// }
+    return deferred.promise;
+}
 
 function _delete(_id) {
     var deferred = Q.defer();

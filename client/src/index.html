@@ -29,7 +29,8 @@
 <body>
     <script type="text/javascript"> 
        var editor;
-
+       var result;
+       
         function outf(text) {
             var mypre = document.getElementById('output');
             mypre.innerHTML = mypre.innerHTML + text;
@@ -117,9 +118,10 @@
             editor.setValue('# Please enter code here');
         }
 
-        function check1() {
+        async function check1() {
             var prog = editor.getDoc().getValue();
             var mypre = document.getElementById('output');
+
             mypre.innerHTML = '';
             Sk.pre = "output";
             Sk.configure({
@@ -127,6 +129,7 @@
                 read: builtinRead
             });
             (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = 'mycanvas';
+
             var myPromise = Sk.misceval.asyncToPromise(function() {
                 // return Sk.importMainWithBody("<stdin>", false, prog, true);
                 try {
@@ -144,21 +147,16 @@
                     divHeader.appendChild(spanHeader);
                 }
             });
+    
             myPromise.then(function(mod) {
                 var value = document.getElementById("output").textContent;
-
-                if (value.includes('Try Again')){
-                    return false;
-                }
-                else{
-                    console.log(true);
-                    return true;
-                }
+                result = value.includes('Try Again');
             },
             function(err) {
                 console.log(err.toString());
             });
         }
+    
       </script>
     <app-root></app-root>
 </body>

@@ -6,13 +6,13 @@
     </li>
     <li class="nav-item">
       <a class="nav-link active" href="/dashboard">
-        <i class="fa fa-tachometer colorActive" aria-hidden="true"></i>
+        <i class="fa fa-tachometer userInfo colorActive" aria-hidden="true"></i>
         Dashboard <span class="sr-only">(current)</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="/coding">
-        <i class="fa fa-laptop color" aria-hidden="true"></i>
+        <i class="fa fa-laptop userInfo color" aria-hidden="true"></i>
         Code
       </a>
     </li>
@@ -27,13 +27,13 @@
     </li>
     <li class="nav-item">
         <a class="nav-link help" (click)="openModal()">
-          <i class="fa fa-question-circle color" aria-hidden="true"></i>
+          <i class="fa fa-question-circle userInfo color" aria-hidden="true"></i>
           Help
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="/dashboard/settings">
-          <i class="fa fa-cog color" aria-hidden="true"></i>
+          <i class="fa fa-cog userInfo color" aria-hidden="true"></i>
           Settings
         </a>
     </li>
@@ -54,7 +54,7 @@
             <div class="gradient"> 
               <div class="about col-8">
                 <div class="col-4 avatar userInfo"> 
-
+                    <ngx-avatar gravatarId="{{currentUser.email}}" size="80"></ngx-avatar>
                 </div>
                 <div class="col-8 description">
                   <div class="message">

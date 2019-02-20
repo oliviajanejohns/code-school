@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { User } from '../models/user.model';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 
 declare function check1(): any;
 declare function resetDefault(): any;
-declare const result: any;
+declare var result: any;
+
 
 @Component({
   selector: 'coding-component',
@@ -16,6 +17,7 @@ declare const result: any;
 export class CodingComponent implements OnInit{
   currentUser: User;
   count: number;
+  correct: boolean = false;
 
   constructor(
     public userService: UserService,
@@ -23,6 +25,7 @@ export class CodingComponent implements OnInit{
   ) 
   {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
   }
   
   ngOnInit(){ 
@@ -30,31 +33,47 @@ export class CodingComponent implements OnInit{
   }
 
   checkCode(){
-    if(this.count==6){
-      check1();
-      if(check1()){
-        console.log("")
-        result == true;
-        this.count=7;
-        console.log(this.count);
+    if(this.currentUser.page == 6){
+      this.check();
+    }
+    else if(this.currentUser.page == 12){
+      this.check();
+    }
+  }
+
+  async check(){
+    await check1().then(() => {
+      if(!result){
+        this.correct = true;
+        console.log(this.correct);
       }
       else{
-        this.count=6;
-        console.log("hi");
-        console.log(this.count);
+        this.correct = false;
+        console.log(this.correct);
       }
-    }
+    });
   }
 
   reset(){
     if(this.count==6){
       window.location.reload();
     }
-    else{
+    else if(this.count==12){
+      window.location.reload();
+    }
+    else if(this.count == 17){
+      window.location.reload();
+    }
+    else if(this.count == 22){
+      window.location.reload();
+    }
+    else if(this.count == 26){
+      window.location.reload();
+    }
+    else {
       resetDefault();
     }
   }
-
 
   next(){
     const level = this.currentUser.level;
@@ -65,16 +84,27 @@ export class CodingComponent implements OnInit{
         }
         else if(this.count == 5){
             this.count++;
-            this.currentUser.page = 6;
             this.edit(this.currentUser, this.count); 
+        }
+        else if(this.count == 6 && this.correct == true){
+            this.count++;
+            this.edit(this.currentUser, this.count); 
+            this.correct = false;
         }
       }
       case 2: {
-        if(this.count >=7 && this.count <=11){
+        if(this.count >=7 && this.count <=10){
             this.count++;
         }
-        else {
-            this.count == 12;
+        else if(this.count == 11){
+            this.count++;
+            this.edit(this.currentUser, this.count); 
+        }
+        else if(this.count == 12 && this.correct == true){
+          this.count++;
+          this.edit(this.currentUser, this.count); 
+          this.correct = false;
+
         }
       }
 
@@ -111,10 +141,10 @@ export class CodingComponent implements OnInit{
   }
 
   edit(currentUser: User, count: number) {
+    this.currentUser.page = this.count;
     this.userService.addPage(currentUser, count).subscribe(
       data => {
         window.location.reload();
       })       
-        this.count++;
   }
 }

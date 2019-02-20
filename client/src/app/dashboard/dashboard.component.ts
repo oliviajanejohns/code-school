@@ -5,6 +5,7 @@ import { User } from '../models/user.model';
 import {Router} from '@angular/router';
 import { FriendsComponent } from './friends/friends.component';
 import { UserService } from '../services/user.service';
+import { GravatarModule } from 'ngx-gravatar';
 
 @Component({
   selector: 'app-dashboard',
@@ -28,6 +29,7 @@ export class DashboardComponent implements OnInit{
     private router: Router
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
   }
   
   ngOnInit(){
@@ -42,6 +44,7 @@ export class DashboardComponent implements OnInit{
         return user2.points - user1.points;
       }); 
   }
+
 
   openModal() {
     this.modalRef = this.modalService.show(HelpComponent);
@@ -58,7 +61,6 @@ export class DashboardComponent implements OnInit{
   reset(){
     this.currentUser.page = this.count;
     this.edit(this.currentUser, this.count);
-    this.router.navigate(['/coding']);
   }
 
   edit(currentUser: User, count: number) {
