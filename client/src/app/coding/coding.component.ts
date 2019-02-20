@@ -17,6 +17,9 @@ declare var result: any;
 export class CodingComponent implements OnInit{
   currentUser: User;
   count: number;
+  level: number;
+  points: number;
+
   correct: boolean = false;
 
   constructor(
@@ -30,6 +33,9 @@ export class CodingComponent implements OnInit{
   
   ngOnInit(){ 
     this.count = this.currentUser.page;
+    this.level = this.currentUser.level;
+    this.points = this.currentUser.points;
+
   }
 
   checkCode(){
@@ -76,8 +82,7 @@ export class CodingComponent implements OnInit{
   }
 
   next(){
-    const level = this.currentUser.level;
-    switch(level){
+    switch(this.level){
       case 1: {  
         if(this.count >=0 && this.count <=4){
             this.count++;
@@ -104,22 +109,43 @@ export class CodingComponent implements OnInit{
           this.count++;
           this.edit(this.currentUser, this.count); 
           this.correct = false;
-
         }
       }
+      case 3: {
+        if(this.count >=13 && this.count <=15){
+            this.count++;
+        }
+        else if(this.count == 16){
+            this.count++;
+            this.edit(this.currentUser, this.count); 
+        }
+        else if(this.count == 17 && this.correct == true){
+          this.count++;
+          this.edit(this.currentUser, this.count); 
+          this.correct = false;
+        }
+      }
+
 
     }
   }
 
   back(){
-    const level = this.currentUser.level;
-    switch(level){
+    switch(this.level){
       case 1: {  
         if(this.count>=0 && this.count <=5){
             this.count--;
         }
         else {
           this.count == 6;
+        }
+      }
+      case 2: {
+        if(this.count >=7 && this.count <=11){
+          this.count--;
+        }
+        else {
+          this.count == 12;
         }
       }
       case 2: {
@@ -145,6 +171,22 @@ export class CodingComponent implements OnInit{
     this.userService.addPage(currentUser, count).subscribe(
       data => {
         window.location.reload();
+      })       
+  }
+
+  editLevel(currentUser: User, level: number) {
+    this.currentUser.level = this.level;
+    this.userService.addLevel(currentUser, level).subscribe(
+      data => {
+        // window.location.reload();
+      })       
+  }
+
+  editPoints(currentUser: User, points: number) {
+    this.currentUser.points = this.points;
+    this.userService.addPoints(currentUser, points).subscribe(
+      data => {
+        // window.location.reload();
       })       
   }
 }

@@ -5,7 +5,6 @@ import { User } from '../models/user.model';
 import {Router} from '@angular/router';
 import { FriendsComponent } from './friends/friends.component';
 import { UserService } from '../services/user.service';
-import { GravatarModule } from 'ngx-gravatar';
 
 @Component({
   selector: 'app-dashboard',
