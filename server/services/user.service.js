@@ -11,6 +11,8 @@ var service = {};
 
 service.authenticate = authenticate;
 service.addPage = addPage;
+service.addPoints = addPoints;
+service.addLevel = addLevel;
 service.getFriends = getFriends;
 service.getById = getById;
 service.create = create;
@@ -48,6 +50,46 @@ function addPage(_id, page) {
             db.users.update(
                 { _id: mongo.helper.toObjectID(_id) },
                 { $set: { page: page } } ,
+                function (err, doc) {
+                    if (err) deferred.reject(err.name + ': ' + err.message);
+                    
+                    deferred.resolve();
+                }
+            );
+        }
+    });
+    return deferred.promise;
+}
+
+function addPoints(_id, points) {
+    var deferred = Q.defer();
+
+    db.users.findById(_id, function (err, user) {
+        if (err) deferred.reject(err.name + ': ' + err.message);
+        if(user){
+            db.users.update(
+                { _id: mongo.helper.toObjectID(_id) },
+                { $set: { points: points } } ,
+                function (err, doc) {
+                    if (err) deferred.reject(err.name + ': ' + err.message);
+                    
+                    deferred.resolve();
+                }
+            );
+        }
+    });
+    return deferred.promise;
+}
+
+function addLevel(_id, level) {
+    var deferred = Q.defer();
+
+    db.users.findById(_id, function (err, user) {
+        if (err) deferred.reject(err.name + ': ' + err.message);
+        if(user){
+            db.users.update(
+                { _id: mongo.helper.toObjectID(_id) },
+                { $set: { level: level } } ,
                 function (err, doc) {
                     if (err) deferred.reject(err.name + ': ' + err.message);
                     

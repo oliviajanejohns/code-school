@@ -5,6 +5,8 @@ var userService = require('services/user.service');
 // routes
 router.put('/friends/', addFriend);
 router.put('/addPage', addPage);
+router.put('/addPoints', addPoints);
+router.put('/addLevel', addLevel);
 router.post('/authenticate', authenticate);
 router.post('/register', register);
 router.get('/current', getCurrent);
@@ -28,6 +30,28 @@ function addFriend(req, res) {
 
 function addPage(req, res) {
     userService.addPage(req.body._id, req.body.page)
+        .then(function () {
+            res.json('success');
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
+
+
+function addPoints(req, res) {
+    userService.addPage(req.body._id, req.body.points)
+        .then(function () {
+            res.json('success');
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
+
+
+function addLevel(req, res) {
+    userService.addPage(req.body._id, req.body.level)
         .then(function () {
             res.json('success');
         })
