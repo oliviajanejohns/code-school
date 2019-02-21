@@ -34,13 +34,20 @@
     height: 30vh !important; 
 }
 
+.content{
+    overflow: auto !important;
+    max-height: 30vh !important;   
+    height: 30vh !important; 
+}
+
 .subheadingContent{
     overflow: auto !important;
-    max-height: 11vh !important;    
+    max-height: 24vh !important;   
+    height: 24vh; 
 }
 
 
-@media (min-width: 1000px) {
+@media (min-width: 768px) {
     .learn{
         overflow: auto !important;
         max-height: 33vh !important;  

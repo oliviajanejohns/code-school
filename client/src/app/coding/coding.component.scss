@@ -1,6 +1,7 @@
 .code{
     height: calc(100vh - 35px - 58px);
     margin-top: 58px;
+    min-width: 768px;
 }
 
 .split-view{
@@ -22,6 +23,22 @@
     position: relative;
     margin: 10px !important;
     padding: 0px !important;
+}
+
+.alert-info{
+    background-color: #FFFD82;
+    font-weight: 300;
+    border-color: #FFFD82;
+    font-size: 13px;
+    color: black !important;
+    bottom: 60px;
+    position: absolute;
+    margin-right: 10px;
+
+}
+
+.textbox{
+    z-index: 1;
 }
 
 .lesson{

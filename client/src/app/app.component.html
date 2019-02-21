@@ -41,7 +41,14 @@
 <router-outlet></router-outlet>
 
 <!-- Footer -->
-<footer class = "bg-dark">
+<footer class = "bg-dark"  *ngIf="router.url !== '/coding'">
+  <div class="container space-2 footer navbar-fixed-bottom">
+      <div class="text-center footer">All rights reserved. © Code Space </div>
+  </div>
+</footer>
+
+<!-- Footer -->
+<footer class = "bg-dark code"  *ngIf="router.url === '/coding'">
   <div class="container space-2 footer navbar-fixed-bottom">
       <div class="text-center footer">All rights reserved. © Code Space </div>
   </div>

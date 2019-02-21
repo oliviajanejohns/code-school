@@ -28,16 +28,16 @@
     background-color: #f7f7f7;
 }
 
-.learn{
-    overflow: auto !important;
-    max-height: 48vh !important;  
-    height: 48vh !important;  
-}
+// .learn{
+//     overflow: auto !important;
+//     min-height: calc(48vh - 102px) !important;  
+//     height: calc(48vh - 102px) !important;  
+// }
 
-@media (min-width: 768px) {
+// @media (min-width: 768px) {
     .learn{
         overflow: auto !important;
-        max-height: 60vh !important;  
-        height: 60vh !important;  
+        min-height: calc(60vh - 105px) !important;  
+        height: calc(60vh - 105px) !important;  
     }
-}
+// }

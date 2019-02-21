@@ -20,6 +20,8 @@ export class DashboardComponent implements OnInit{
   percent: number;
   mobile = false;
   count: number;
+  points: number;
+  level: number;
 
   constructor
   (
@@ -34,6 +36,9 @@ export class DashboardComponent implements OnInit{
   ngOnInit(){
     this.loadFriends(this.currentUser);
     this.count = 0;
+    this.level = 1;
+    this.points = 0;
+
     if(this.currentUser.level == 1){
       this.percent = 0
     }
@@ -79,13 +84,33 @@ export class DashboardComponent implements OnInit{
 
   reset(){
     this.currentUser.page = this.count;
+    this.currentUser.points = this.points;
+    this.currentUser.level = this.level;
+
     this.edit(this.currentUser, this.count);
+    this.edit(this.currentUser, this.count);
+    this.edit(this.currentUser, this.count);
+
     window.location.reload();
   }
 
   edit(currentUser: User, count: number) {
     this.userService.addPage(currentUser, count).subscribe(
       data => {
+      })       
+  }
+
+  editLevel(currentUser: User, level: number) {
+    this.userService.addLevel(currentUser, level).subscribe(
+      data => {
+
+      })       
+  }
+
+  editPoints(currentUser: User, points: number) {
+    this.userService.addPoints(currentUser, points).subscribe(
+      data => {
+      
       })       
   }
 }

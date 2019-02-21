@@ -88,33 +88,35 @@ export class CodingComponent implements OnInit{
             this.count++;
         }
         else if(this.count == 5){
-            // this.count++;
+            this.count++;
             this.edit(this.currentUser, this.count); 
         }
         else if(this.count == 6 && this.correct == true){
-            // this.count++;
+            this.count++;
             this.edit(this.currentUser, this.count); 
-            this.correct = false;
+            this.editLevel(this.currentUser, this.level);
+            this.editPoints(this.currentUser, this.points);
         }
       }
       case 2: {
         if(this.count >=7 && this.count <=10){
+            this.correct = false;
             this.count++;
         }
         else if(this.count == 11){
-            // this.count++;
+            this.count++;
             this.edit(this.currentUser, this.count); 
         }
         else if(this.count == 12 && this.correct == true){
-          // this.count++;
+          this.count++;
           this.edit(this.currentUser, this.count); 
           this.editLevel(this.currentUser, this.level);
           this.editPoints(this.currentUser, this.points);
-          this.correct = false;
         }
       }
       case 3: {
         if(this.count >=13 && this.count <=15){
+            this.correct = false;
             this.count++;
         }
         else if(this.count == 16){
@@ -127,8 +129,6 @@ export class CodingComponent implements OnInit{
           this.correct = false;
         }
       }
-
-
     }
   }
 
@@ -150,12 +150,20 @@ export class CodingComponent implements OnInit{
           this.count == 12;
         }
       }
-      case 2: {
-        if(this.count >=7 && this.count <=11){
+      case 3: {
+        if(this.count >=13 && this.count <=16){
           this.count--;
         }
         else {
-          this.count == 12;
+          this.count == 17;
+        }
+      }
+      case 4: {
+        if(this.count >=13 && this.count <=16){
+          this.count--;
+        }
+        else {
+          this.count == 17;
         }
       }
 
@@ -169,23 +177,29 @@ export class CodingComponent implements OnInit{
   }
 
   edit(currentUser: User, count: number) {
-    this.userService.addPage(currentUser, count++).subscribe(
+    this.currentUser.page = this.count;
+    this.userService.addPage(currentUser, count).subscribe(
       data => {
-        this.count++;
-        this.currentUser.page = this.count;
         window.location.reload();
       })       
   }
 
   editLevel(currentUser: User, level: number) {
-    this.userService.addLevel(currentUser, level++).subscribe(
+    console.log(this.currentUser.level);
+    console.log("edit level");
+
+    this.level++;
+    this.currentUser.level = this.level;
+    this.userService.addLevel(currentUser, level).subscribe(
       data => {
-        this.level++
-        this.currentUser.level = this.level;
+
       })       
   }
 
   editPoints(currentUser: User, points: number) {
+    console.log(this.currentUser.points);
+    console.log("edit points");
+
     this.points = this.points + 500;
     this.currentUser.points = this.points;
     this.userService.addPoints(currentUser, points).subscribe(
