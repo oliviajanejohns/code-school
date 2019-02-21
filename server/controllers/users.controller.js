@@ -38,7 +38,6 @@ function addPage(req, res) {
         });
 }
 
-
 function addPoints(req, res) {
     userService.addPage(req.body._id, req.body.points)
         .then(function () {

@@ -62,6 +62,7 @@ function addPage(_id, page) {
 }
 
 function addPoints(_id, points) {
+    console.log("add points - user.service.js");
     var deferred = Q.defer();
 
     db.users.findById(_id, function (err, user) {
@@ -82,6 +83,8 @@ function addPoints(_id, points) {
 }
 
 function addLevel(_id, level) {
+    console.log("add level - user.service.js");
+
     var deferred = Q.defer();
 
     db.users.findById(_id, function (err, user) {
@@ -307,6 +310,14 @@ function update(_id, userParam) {
 
 function _delete(_id) {
     var deferred = Q.defer();
+
+    // db.users.findById(_id, function (err, user) {
+    //     if (err) deferred.reject(err.name + ': ' + err.message);
+
+    //     if (user) {
+            
+    //     }
+    // });
 
     db.users.remove(
         { _id: mongo.helper.toObjectID(_id) },
