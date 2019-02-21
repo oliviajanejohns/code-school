@@ -54,8 +54,11 @@
             <div class="gradient"> 
               <div class="about col-8">
                 <div class="col-4 avatar userInfo"> 
-                    <ngx-avatar gravatarId="{{currentUser.email}}" size="80"></ngx-avatar>
-                </div>
+                    <ngx-avatar gravatarId="{{currentUser.email}}" src="assets/img/avatar.png" size="80"></ngx-avatar>
+                    <div class="link text-center">
+                      <h6><a href="https://en.gravatar.com/email" class="small">Change</a></h6>
+                    </div>
+                  </div>
                 <div class="col-8 description">
                   <div class="message">
                     welcome back!
@@ -90,7 +93,7 @@
             <div class="buttonSide">
                 <a class="btn btn-lg btn-primary confirm" href="/coding">                
                   <i class="fa fa-play space" aria-hidden="true"></i>
-                  <span>Start</span>
+                  <span>Begin - {{percent}}%</span>
                 </a>
             </div>
             <div class="section">

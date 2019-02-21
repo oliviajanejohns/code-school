@@ -281,6 +281,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
 
 .help{
   color: #21c87a !important;
+  cursor: pointer;
 }
 
 .italic{
@@ -347,4 +348,9 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   .mobile {
     display: none;
   }
+}
+
+.small{
+  text-decoration: none !important;;
+  // color: white !important;
 }

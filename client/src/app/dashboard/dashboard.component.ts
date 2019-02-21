@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit{
   users: User[] = [];
   sortedArray: User[] = [];
   user: User;
-
+  percent: number;
   mobile = false;
   count: number;
 
@@ -34,6 +34,27 @@ export class DashboardComponent implements OnInit{
   ngOnInit(){
     this.loadFriends(this.currentUser);
     this.count = 0;
+    if(this.currentUser.level == 1){
+      this.percent = 0
+    }
+    else if(this.currentUser.level==2){
+      this.percent = 17
+    }
+    else if(this.currentUser.level==3){
+      this.percent = 33
+    }
+    else if(this.currentUser.level==4){
+      this.percent = 50
+    }
+    else if(this.currentUser.level==5){
+      this.percent = 67
+    }
+    else if(this.currentUser.level==6){
+      this.percent = 83
+    }
+    else if(this.currentUser.level==7){
+      this.percent = 100
+    }
   }
 
   private loadFriends(user: User) {
@@ -43,7 +64,6 @@ export class DashboardComponent implements OnInit{
         return user2.points - user1.points;
       }); 
   }
-
 
   openModal() {
     this.modalRef = this.modalService.show(HelpComponent);
@@ -60,6 +80,7 @@ export class DashboardComponent implements OnInit{
   reset(){
     this.currentUser.page = this.count;
     this.edit(this.currentUser, this.count);
+    window.location.reload();
   }
 
   edit(currentUser: User, count: number) {

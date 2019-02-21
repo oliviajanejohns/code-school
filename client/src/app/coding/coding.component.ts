@@ -88,11 +88,11 @@ export class CodingComponent implements OnInit{
             this.count++;
         }
         else if(this.count == 5){
-            this.count++;
+            // this.count++;
             this.edit(this.currentUser, this.count); 
         }
         else if(this.count == 6 && this.correct == true){
-            this.count++;
+            // this.count++;
             this.edit(this.currentUser, this.count); 
             this.correct = false;
         }
@@ -102,12 +102,14 @@ export class CodingComponent implements OnInit{
             this.count++;
         }
         else if(this.count == 11){
-            this.count++;
+            // this.count++;
             this.edit(this.currentUser, this.count); 
         }
         else if(this.count == 12 && this.correct == true){
-          this.count++;
+          // this.count++;
           this.edit(this.currentUser, this.count); 
+          this.editLevel(this.currentUser, this.level);
+          this.editPoints(this.currentUser, this.points);
           this.correct = false;
         }
       }
@@ -167,26 +169,28 @@ export class CodingComponent implements OnInit{
   }
 
   edit(currentUser: User, count: number) {
-    this.currentUser.page = this.count;
-    this.userService.addPage(currentUser, count).subscribe(
+    this.userService.addPage(currentUser, count++).subscribe(
       data => {
+        this.count++;
+        this.currentUser.page = this.count;
         window.location.reload();
       })       
   }
 
   editLevel(currentUser: User, level: number) {
-    this.currentUser.level = this.level;
-    this.userService.addLevel(currentUser, level).subscribe(
+    this.userService.addLevel(currentUser, level++).subscribe(
       data => {
-        // window.location.reload();
+        this.level++
+        this.currentUser.level = this.level;
       })       
   }
 
   editPoints(currentUser: User, points: number) {
+    this.points = this.points + 500;
     this.currentUser.points = this.points;
     this.userService.addPoints(currentUser, points).subscribe(
       data => {
-        // window.location.reload();
+      
       })       
   }
 }
