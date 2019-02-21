@@ -45,6 +45,9 @@ export class CodingComponent implements OnInit{
     else if(this.currentUser.page == 12){
       this.check();
     }
+    else if(this.currentUser.page == 17){
+      this.check();
+    }
   }
 
   async check(){
@@ -92,10 +95,10 @@ export class CodingComponent implements OnInit{
             this.edit(this.currentUser, this.count); 
         }
         else if(this.count == 6 && this.correct == true){
-            this.count++;
-            this.edit(this.currentUser, this.count); 
-            this.editLevel(this.currentUser, this.level);
+            this.points = this.points + 500;
+            this.level++;
             this.editPoints(this.currentUser, this.points);
+            this.editLevel(this.currentUser, this.level);
         }
       }
       case 2: {
@@ -185,22 +188,15 @@ export class CodingComponent implements OnInit{
   }
 
   editLevel(currentUser: User, level: number) {
-    console.log(this.currentUser.level);
-    console.log("edit level");
-
-    this.level++;
     this.currentUser.level = this.level;
     this.userService.addLevel(currentUser, level).subscribe(
       data => {
-
+        this.count++;
+        this.edit(this.currentUser,this.count);
       })       
   }
 
   editPoints(currentUser: User, points: number) {
-    console.log(this.currentUser.points);
-    console.log("edit points");
-
-    this.points = this.points + 500;
     this.currentUser.points = this.points;
     this.userService.addPoints(currentUser, points).subscribe(
       data => {

@@ -45,12 +45,15 @@ export class UserService {
     }
 
 
-    addPoints(user: User, points: number) {      
+    addPoints(user: User, points: number) {  
+      console.log("points")    
       localStorage.setItem('currentUser', JSON.stringify(user));
       return this.http.put(appConfig.apiUrl + '/users/addPoints', { _id: user._id , points: points });
     }
     
-    addLevel(user: User, level: number) {      
+    addLevel(user: User, level: number) {    
+      console.log("level")    
+  
       localStorage.setItem('currentUser', JSON.stringify(user));
       return this.http.put(appConfig.apiUrl + '/users/addLevel', { _id: user._id , level: level });
     }

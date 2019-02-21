@@ -30,11 +30,11 @@
 
 .learn{
     overflow: auto !important;
-    max-height: 48vh !important;  
-    height: 48vh !important;  
+    max-height: 55vh !important;  
+    height: 55vh !important;  
 }
 
-@media (min-width: 768px) {
+@media (min-width: 854px) {
     .learn{
         overflow: auto !important;
         max-height: 60vh !important;  
