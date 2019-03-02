@@ -17,6 +17,7 @@ export class UserService {
     }
 
     update(user: User) {
+      console.log('update');
       localStorage.setItem('currentUser', JSON.stringify(user));
       return this.http.put(appConfig.apiUrl + '/users/' + user._id, user);
     }
@@ -42,20 +43,6 @@ export class UserService {
     addPage(user: User, count: number) {      
       localStorage.setItem('currentUser', JSON.stringify(user));
       return this.http.put(appConfig.apiUrl + '/users/addPage', { _id: user._id , page: count });
-    }
-
-
-    addPoints(user: User, points: number) {  
-      console.log("points")    
-      localStorage.setItem('currentUser', JSON.stringify(user));
-      return this.http.put(appConfig.apiUrl + '/users/addPoints', { _id: user._id , points: points });
-    }
-    
-    addLevel(user: User, level: number) {    
-      console.log("level")    
-  
-      localStorage.setItem('currentUser', JSON.stringify(user));
-      return this.http.put(appConfig.apiUrl + '/users/addLevel', { _id: user._id , level: level });
     }
 
     getNonFriends(user: User){

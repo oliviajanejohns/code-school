@@ -1,3 +1,22 @@
-<p>
-  lesson23 works!
-</p>
+<div class="main">
+    <div class="content">
+      <p class ="text lesson-title">
+        Chapter 5: Regular Expressions - Find All
+      </p>
+      <div class="text learn">
+        <p class="lessonContent">
+            findall() is probably the single most powerful function in the re module. Above we used re.search() to find the first match for a pattern. findall() finds *all* the matches and returns them as a list of strings, with each string representing one match.
+        </p>
+        <p class="exampleCode">
+            <span class="comment">## Suppose we have a text with many email addresses</span><br>
+            str = <span class="str">'purple alice@google.com, blah monkey bob@abc.com blah dishwasher'</span><br>
+            <br>
+            <span class="comment">## Here re.findall() returns a list of all the found email strings</span><br>
+            emails = re.findall(r<span class="str">'[\w\.-]+@[\w\.-]+'</span>, str) <span class="comment">## ['alice@google.com', 'bob@abc.com']</span><br>
+            <span class="kwd">for</span> email <span class="kwd">in</span> emails:<br>
+            &nbsp;&nbsp; <span class="comment"># do something with each found email string</span><br>
+            &nbsp;&nbsp; <span class="kwd">print</span> email
+        </p>
+      </div>
+    </div>
+  </div>

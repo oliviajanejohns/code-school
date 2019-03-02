@@ -2,6 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { User } from '../models/user.model';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
 declare function check1(): any;
 declare function resetDefault(): any;
@@ -19,12 +21,15 @@ export class CodingComponent implements OnInit{
   count: number;
   level: number;
   points: number;
+  show: boolean = false;
+  modalRef: BsModalRef;
 
   correct: boolean = false;
 
   constructor(
     public userService: UserService,
-    private router: Router
+    private router: Router,
+    private modalService: BsModalService,
   ) 
   {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -46,6 +51,12 @@ export class CodingComponent implements OnInit{
       this.check();
     }
     else if(this.currentUser.page == 17){
+      this.check();
+    }
+    else if(this.currentUser.page == 22){
+      this.check();
+    }
+    else if(this.currentUser.page == 28){
       this.check();
     }
   }
@@ -95,10 +106,16 @@ export class CodingComponent implements OnInit{
             this.edit(this.currentUser, this.count); 
         }
         else if(this.count == 6 && this.correct == true){
-            this.points = this.points + 500;
-            this.level++;
-            this.editPoints(this.currentUser, this.points);
-            this.editLevel(this.currentUser, this.level);
+          this.points = this.points + 500;
+          this.level++;
+          this.count++;
+          this.currentUser.points = this.points;
+          this.currentUser.level = this.level;
+          this.currentUser.page = this.count;
+          this.update();
+        }
+        else{
+          this.count == 6;
         }
       }
       case 2: {
@@ -111,10 +128,16 @@ export class CodingComponent implements OnInit{
             this.edit(this.currentUser, this.count); 
         }
         else if(this.count == 12 && this.correct == true){
+          this.points = this.points + 500;
+          this.level++;
           this.count++;
-          this.edit(this.currentUser, this.count); 
-          this.editLevel(this.currentUser, this.level);
-          this.editPoints(this.currentUser, this.points);
+          this.currentUser.points = this.points;
+          this.currentUser.level = this.level;
+          this.currentUser.page = this.count;
+          this.update();
+        }
+        else{
+          this.count == 12;
         }
       }
       case 3: {
@@ -127,9 +150,60 @@ export class CodingComponent implements OnInit{
             this.edit(this.currentUser, this.count); 
         }
         else if(this.count == 17 && this.correct == true){
+          this.points = this.points + 500;
+          this.level++;
           this.count++;
-          this.edit(this.currentUser, this.count); 
-          this.correct = false;
+          this.currentUser.points = this.points;
+          this.currentUser.level = this.level;
+          this.currentUser.page = this.count;
+          this.update();
+        }
+        else{
+          this.count == 17;
+        }
+      }
+      case 4: {
+        if(this.count >=18 && this.count <=20){
+            this.correct = false;
+            this.count++;
+        }
+        else if(this.count == 21){
+            this.count++;
+            this.edit(this.currentUser, this.count); 
+        }
+        else if(this.count == 22 && this.correct == true){
+          this.points = this.points + 500;
+          this.level++;
+          this.count++;
+          this.currentUser.points = this.points;
+          this.currentUser.level = this.level;
+          this.currentUser.page = this.count;
+          this.update();
+        }
+        else{
+          this.count == 22;
+        }
+      }
+      case 5: {
+        if(this.count >=23 && this.count <=26){
+            this.correct = false;
+            this.count++;
+        }
+        else if(this.count == 27){
+            this.count++;
+            this.edit(this.currentUser, this.count); 
+        }
+        else if(this.count == 28 && this.correct == true){
+          this.points = this.points + 500;
+          this.level++;
+          this.count++;
+          this.currentUser.points = this.points;
+          this.currentUser.level = this.level;
+          this.currentUser.page = this.count;
+          this.update();
+        }
+        else{
+          this.count == 28;
         }
       }
     }
@@ -162,14 +236,21 @@ export class CodingComponent implements OnInit{
         }
       }
       case 4: {
-        if(this.count >=13 && this.count <=16){
+        if(this.count >=18 && this.count <=21){
           this.count--;
         }
         else {
-          this.count == 17;
+          this.count == 22;
         }
       }
-
+      case 5: {
+        if(this.count >=23 && this.count <=27){
+          this.count--;
+        }
+        else {
+          this.count == 28;
+        }
+      }
     }
   }
 
@@ -180,6 +261,7 @@ export class CodingComponent implements OnInit{
   }
 
   edit(currentUser: User, count: number) {
+    console.log('edit');
     this.currentUser.page = this.count;
     this.userService.addPage(currentUser, count).subscribe(
       data => {
@@ -187,20 +269,19 @@ export class CodingComponent implements OnInit{
       })       
   }
 
-  editLevel(currentUser: User, level: number) {
-    this.currentUser.level = this.level;
-    this.userService.addLevel(currentUser, level).subscribe(
+  update(){    
+    this.userService.update(this.currentUser).subscribe(
       data => {
-        this.count++;
-        this.edit(this.currentUser,this.count);
-      })       
+        window.location.reload();
+      });
   }
 
-  editPoints(currentUser: User, points: number) {
-    this.currentUser.points = this.points;
-    this.userService.addPoints(currentUser, points).subscribe(
-      data => {
-      
-      })       
+  toggle(){
+    if(this.show == true){
+      this.show = false;
+    } 
+    else{
+      this.show = true;
+    }
   }
 }

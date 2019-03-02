@@ -7,19 +7,19 @@
       <p class="text lessonContent">
         Python's *for* and *in* constructs are extremely useful, and the first use of them we'll see is with lists. The *for* construct -- for var in list -- is an easy way to look at each element in a list (or other collection). Do not add or remove from the list during iteration.      </p>    
       <p class="exampleCode">
-        squares = [1, 4, 9, 16]<br>
-        sum = 0<br>
-        for num in squares:<br>
+        squares = [<span class="lit">1</span>, <span class="lit">4</span>, <span class="lit">9</span>, <span class="lit">16</span>]<br>
+        sum = <span class="lit">0</span><br>
+        <span class="kwd">for</span> num <span class="kwd">in</span> squares:<br>
           sum += num <br>
-        print sum  ## 30 <br>
+        <span class="kwd">print</span> sum  <span class="comment">## 30 </span><br>
       </p>   
       <p class="text lessonContent">
         If you know what sort of thing is in the list, use a variable name in the loop that captures that information such as "num", or "name", or "url". Since python code does not have other syntax to remind you of types, your variable names are a key way for you to keep straight what is going on.
         The *in* construct on its own is an easy way to test if an element appears in a list (or other collection) -- value in collection -- tests if the value is in the collection, returning True/False.      </p>   
       <p class="exampleCode">
-        list = ['larry', 'curly', 'moe'] <br>
-        if 'curly' in list:<br>
-          print 'yay'<br>
+        list = [<span class="str">'larry'</span>, <span class="str">'curly'</span>, <span class="str">'moe'</span>] <br>
+        <span class="kwd">if</span> 'curly' <span class="kwd">in</span> list:<br>
+        <span class="kwd">print</span> <span class="str">'yay'</span><br>
       </p>
       <p class="text lessonContent">
         The for/in constructs are very commonly used in Python code and work on data types other than list, so you should just memorize their syntax. You may have habits from other languages where you start manually iterating over a collection, where in Python you should just use for/in.

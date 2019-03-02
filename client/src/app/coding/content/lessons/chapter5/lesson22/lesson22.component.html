@@ -1,3 +1,23 @@
-<p>
-  lesson22 works!
-</p>
+<div class="main">
+    <div class="content">
+      <p class ="text lesson-title">
+        Chapter 5: Regular Expressions - Group Extraction
+      </p>
+      <div class="text learn">
+        <p class="lessonContent">
+            The "group" feature of a regular expression allows you to pick out parts of the matching text. Suppose for the emails problem that we want to extract the username and host separately. To do this, add parenthesis ( ) around the username and host in the pattern, like this: r'([\w.-]+)@([\w.-]+)'. In this case, the parenthesis do not change what the pattern will match, instead they establish logical "groups" inside of the match text. On a successful search, match.group(1) is the match text corresponding to the 1st left parenthesis, and match.group(2) is the text corresponding to the 2nd left parenthesis. The plain match.group() is still the whole match text as usual.           
+        </p>
+        <p class="exampleCode">
+          str = <span class="str">'purple alice-b@google.com monkey dishwasher'</span><br>
+          match = re.search(r<span class="str">'([\w.-]+)@([\w.-]+)'</span>, str)<br>
+          <span class="kwd">if</span> match:<br>
+          &nbsp;&nbsp; <span class="kwd">print</span> match.group()   <span class="comment">## 'alice-b@google.com' (the whole match)</span><br>
+          &nbsp;&nbsp; <span class="kwd">print</span> match.group(1)  <span class="comment">## 'alice-b' (the username, group 1)</span><br>
+          &nbsp;&nbsp; <span class="kwd">print</span> match.group(2)  <span class="comment">## 'google.com' (the host, group 2)</span>
+        </p>
+        <p class="lessonContent">
+            A common workflow with regular expressions is that you write a pattern for the thing you are looking for, adding parenthesis groups to extract the parts you want.
+       </p>
+      </div>
+    </div>
+  </div>

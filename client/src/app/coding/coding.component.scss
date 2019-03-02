@@ -144,7 +144,7 @@
     bottom: 10px;
     padding: 0 !important;
     width: 100%;
-    z-index: 1000 !important;
+    z-index: 500 !important;
 
 }
 
@@ -156,5 +156,32 @@
 .separatorPad{
     margin-left: 15px !important;
     margin-right: 15px !important;
+
+}
+
+.show{
+    transform: rotate(90deg);
+    left: 0;
+    position: fixed;
+    z-index: 1000 !important;
+    text-align: center;
+    top: 50vh;
+    margin-left: -32px;
+    padding: 0px !important;
+    width: 5rem;
+}
+.rotate{
+    transform: rotate(270deg);
+}
+
+.alert-success{
+    font-weight: 300;
+    font-size: 13px;
+    bottom: 60px;
+    position: absolute;
+    margin-right: 10px;
+    color: #d0b794 !important;
+    background-color: #f8efe4 !important;
+    border-color:#f8efe4!important;
 
 }

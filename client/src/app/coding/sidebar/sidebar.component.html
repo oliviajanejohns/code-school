@@ -1,0 +1,34 @@
+    <!-- Sidebar -->
+    <ul class="sidebar navbar-nav overlay">
+      <button type="button" class="btn btn-lg btn-secondary show overlay" (click)="close()"><i class="fa fa-arrow-circle-o-left rotate" aria-hidden="true"></i></button>
+      <li class="nav-item divider">
+          Menu
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/dashboard">
+          <i class="fa fa-tachometer userInfo color" aria-hidden="true"></i>
+          Dashboard <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="/coding">
+          <i class="fa fa-laptop userInfo colorActive" aria-hidden="true"></i>
+          Code
+        </a>
+      </li>
+      <li class="nav-item divider">
+          More
+      </li>
+      <li class="nav-item">
+          <a class="nav-link help" (click)="openModal()">
+            <i class="fa fa-question-circle userInfo color" aria-hidden="true"></i>
+            Help
+          </a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="/dashboard/settings">
+            <i class="fa fa-cog userInfo color" aria-hidden="true"></i>
+            Settings
+          </a>
+      </li>
+    </ul>

@@ -8,16 +8,16 @@
         Python has a great built-in list type named "list". List literals are written within square brackets [ ]. Lists work similarly to strings -- use the len() function and square brackets [ ] to access data, with the first element at index 0. 
       </p>    
       <p class="exampleCode">
-        colors = ['red', 'blue', 'green'] <br>
-        print colors[0]    ## red<br>
-        print colors[2]    ## green<br>
-        print len(colors)  ## 3<br>
+        colors = [<span class="str">'red'</span>, <span class="str">'blue'</span>,  <span class="str">'green'</span>] <br>
+        <span class="kwd">print</span> colors[<span class="lit">0</span>]    <span class="comment">## red</span><br>
+        <span class="kwd">print</span> colors[<span class="lit">2</span>]    <span class="comment">## green</span><br>
+        <span class="kwd">print</span> len(colors)   <span class="comment">## 3</span><br>
       </p>   
       <p class="text lessonContent">
         Assignment with an = on lists does not make a copy. Instead, assignment makes the two variables point to the one list in memory.
       </p>   
       <p class="exampleCode">
-        b = colors   ## Does not copy the list 
+        b = colors  <span class="comment"> ## Does not copy the list </span>
       </p>
       <p class="text lessonContent">
         The "empty list" is just an empty pair of brackets [ ]. The '+' works to append two lists, so [1, 2] + [3, 4] yields [1, 2, 3, 4] (this is just like + with strings).

@@ -9,26 +9,26 @@
 
         To create a tuple, just list the values within parenthesis separated by commas. The "empty" tuple is just an empty pair of parenthesis. Accessing the elements in a tuple is just like a list -- len(), [ ], for, in, etc. all work the same.      </p>
       <p class="exampleCode">
-        tuple = (1, 2, 'hi')<br>
-        print len(tuple)  ## 3<br>
-        print tuple[2]    ## hi<br>
-        tuple[2] = 'bye'  ## NO, tuples cannot be changed<br>
-        tuple = (1, 2, 'bye')  ## this works
+        tuple = (<span class="lit">1</span>, <span class="lit">2</span>, <span class="str">'hi'</span>)<br>
+        <span class="kwd">print</span> len(tuple)   <span class="comment">## 3</span><br>
+        <span class="kwd">print</span> tuple[<span class="lit">2</span>]     <span class="comment">## hi</span><br>
+        tuple[<span class="lit">2</span>] = 'bye'   <span class="comment">## NO, tuples cannot be changed</span><br>
+        tuple = (<span class="lit">1</span>, <span class="lit">2</span>, <span class="str">'bye'</span>)  <span class="comment">## this works</span>
       </p>
       <p class="lessonContent">
         To create a size-1 tuple, the lone element must be followed by a comma.
       </p>
       <p class="exampleCode">
-        tuple = ('hi',)   ## size-1 tuple
+        tuple = (<span class="str">'hi'</span>,)   <span class="comment">## size-1 tuple</span>
       </p>     
       <p class="lessonContent">
         It's a funny case in the syntax, but the comma is necessary to distinguish the tuple from the ordinary case of putting an expression in parentheses. In some cases you can omit the parenthesis and Python will see from the commas that you intend a tuple.
         Assigning a tuple to an identically sized tuple of variable names assigns all the corresponding values. If the tuples are not the same size, it throws an error. This feature works for lists too.      
       </p>  
       <p class="exampleCode">
-        (x, y, z) = (42, 13, "hike")<br>
-        print z  ## hike<br>
-        (err_string, err_code) = Foo()  ## Foo() returns a length-2 tuple      
+        (x, y, z) = (<span class="lit">42</span>, <span class="lit">13</span>, <span class="str">"hike"</span>)<br>
+        <span class="kwd">print</span> z  <span class="comment">## hike</span><br>
+        (err_string, err_code) = <span class="typ">Foo</span>()  <span class="comment">## Foo() returns a length-2 tuple </span>
       </p> 
     </div>
   </div>

@@ -22,16 +22,19 @@
           Notice that these are *methods* on a list object, while len() is a function that takes the list (or string or whatever) as an argument.
         </p>
         <p class="exampleCode">
-          list = ['larry', 'curly', 'moe']<br>
-          list.append('shemp')         ## append elem at end <br>
-          list.insert(0, 'xxx')        ## insert elem at index 0<br>
-          list.extend(['yyy', 'zzz'])  ## add list of elems at end<br>
-          print list  ## ['xxx', 'larry', 'curly', 'moe', 'shemp', 'yyy', 'zzz']<br>
-          print list.index('curly')    ## 2<br>
+          list = [<span class="str">'larry'</span>, <span class="str">'curly'</span>, <span class="str">'moe'</span>]<br>
+          list.append(<span class="str">'shemp'</span>)         ## append elem at end <br>
+          list.insert(0, <span class="str">'xxx'</span>)        ## insert elem at index 0<br>
+          list.extend([<span class="str">'yyy'</span>, <span class="str">'zzz'</span>])  <span class="comment">## add list of elems at end</span><br>
+          <span class="kwd">print</span> list  <span class="comment">## ['xxx', 'larry', 'curly', 'moe', 'shemp', 'yyy', 'zzz']</span><br>
+          <span class="kwd">print</span> list.index(<span class="str">'curly'</span>)    ## 2<br>
           <br>
-          list.remove('curly')         ## search and remove that element<br>
+          list.remove(<span class="str">'curly'</span>)        <span class="comment"> ## search and remove that element</span><br>
           list.pop(1)                  ## removes and returns 'larry'<br>
-          print list  ## ['xxx', 'moe', 'shemp', 'yyy', 'zzz']<br>
+          print list  <span class="comment">## ['xxx', 'larry', 'curly', 'moe', 'shemp', 'yyy', 'zzz']</span>
         </p>   
+        <p class="lessonContent">
+          Common error: note that the above methods do not *return* the modified list, they just modify the original list.
+        </p>
   </div>
 </div>

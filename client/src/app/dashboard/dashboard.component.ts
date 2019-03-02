@@ -43,21 +43,18 @@ export class DashboardComponent implements OnInit{
       this.percent = 0
     }
     else if(this.currentUser.level==2){
-      this.percent = 17
+      this.percent = 20
     }
     else if(this.currentUser.level==3){
-      this.percent = 33
+      this.percent = 40
     }
     else if(this.currentUser.level==4){
-      this.percent = 50
+      this.percent = 60
     }
     else if(this.currentUser.level==5){
-      this.percent = 67
+      this.percent = 80
     }
     else if(this.currentUser.level==6){
-      this.percent = 83
-    }
-    else if(this.currentUser.level==7){
       this.percent = 100
     }
   }
@@ -87,31 +84,11 @@ export class DashboardComponent implements OnInit{
     this.currentUser.points = this.points;
     this.currentUser.level = this.level;
 
-    this.edit(this.currentUser, this.count);
-    this.edit(this.currentUser, this.count);
-    this.edit(this.currentUser, this.count);
-
-    window.location.reload();
-  }
-
-  edit(currentUser: User, count: number) {
-    this.userService.addPage(currentUser, count).subscribe(
+    this.userService.update(this.currentUser).subscribe(
       data => {
-      })       
-  }
+      });
+      window.location.reload();
 
-  editLevel(currentUser: User, level: number) {
-    this.userService.addLevel(currentUser, level).subscribe(
-      data => {
-
-      })       
-  }
-
-  editPoints(currentUser: User, points: number) {
-    this.userService.addPoints(currentUser, points).subscribe(
-      data => {
-      
-      })       
   }
 }
 

@@ -30,14 +30,38 @@
 
 .learn{
     overflow: auto !important;
-    max-height: 48vh !important;  
-    height: 48vh !important;  
+    max-height: 30vh !important;   
+    height: 30vh !important; 
 }
+
+.content{
+    overflow: auto !important;
+    max-height: 30vh !important;   
+    height: 30vh !important; 
+}
+
+.subheadingContent{
+    overflow: auto !important;
+    max-height: 24vh !important;   
+    height: 24vh; 
+}
+
 
 @media (min-width: 768px) {
     .learn{
         overflow: auto !important;
-        max-height: 60vh !important;  
-        height: 60vh !important;  
+        max-height: 33vh !important;  
+        height: 33vh !important;  
+    }
+    .subheadingContent{
+        overflow: auto !important;
+        max-height: 25vh !important;  
+        height: 25vh;  
+  
+    }
+    .content{
+        height: 40vh;
     }
 }
+
+

@@ -50,12 +50,14 @@ import { Lesson20Component } from './coding/content/lessons/chapter5/lesson20/le
 import { Lesson21Component } from './coding/content/lessons/chapter5/lesson21/lesson21.component';
 import { Lesson22Component } from './coding/content/lessons/chapter5/lesson22/lesson22.component';
 import { Lesson23Component } from './coding/content/lessons/chapter5/lesson23/lesson23.component';
-import { Lesson24Component } from './coding/content/lessons/chapter5/lesson24/lesson24.component';
 import { Exercise2Component } from './coding/content/lessons/chapter2/exercise2/exercise2.component';
 import { Exercise3Component } from './coding/content/lessons/chapter3/exercise3/exercise3.component';
 import { Exercise4Component } from './coding/content/lessons/chapter4/exercise4/exercise4.component';
 import { DeleteComponent } from './dashboard/settings/delete/delete.component';
 import { AvatarModule } from 'ngx-avatar';
+import { SidebarComponent } from './coding/sidebar/sidebar.component';
+import { CompletedComponent } from './coding/content/completed/completed.component';
+import { Exercise5Component } from './coding/content/lessons/chapter5/exercise5/exercise5.component';
 
 
 @NgModule({
@@ -97,11 +99,13 @@ import { AvatarModule } from 'ngx-avatar';
     Lesson21Component, 
     Lesson22Component, 
     Lesson23Component, 
-    Lesson24Component, 
     Exercise2Component,
     Exercise3Component,
     Exercise4Component,
     DeleteComponent,
+    SidebarComponent,
+    CompletedComponent,
+    Exercise5Component,
 
     ],
   imports: [

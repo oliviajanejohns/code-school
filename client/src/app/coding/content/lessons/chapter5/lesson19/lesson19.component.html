@@ -1,23 +1,31 @@
 <div class="main">
   <div class="content">
     <p class ="text lesson-title">
-      Chapter 3: Python Python Dict and File - Files
+      Chapter 5: Regular Expressions
     </p>
     <div class="text learn">
       <p class="lessonContent">
-        The "codecs" module provides support for reading a unicode file.
+          Regular expressions are a powerful language for matching text patterns. This page gives a basic introduction to regular expressions themselves sufficient for our Python exercises and shows how regular expressions work in Python. The Python "re" module provides regular expression support.
+          In Python a regular expression search is typically written as:
       </p>
       <p class="exampleCode">
-        # Echo the contents of a file<br>
-        f = open('foo.txt', 'rU')<br>
-        for line in f:   ## iterates over the lines of the file<br>
-          print line,    ## trailing , so print does not add an end-of-line char<br>
-                          ## since 'line' already includes the end-of line.<br>
-        f.close()<br>
+          match = re.search(pat, str)
+      </p>
+      <p class="lessonContent">
+          The re.search() method takes a regular expression pattern and a string and searches for that pattern within the string. If the search is successful, search() returns a match object or None otherwise. Therefore, the search is usually immediately followed by an if-statement to test if the search succeeded, as shown in the following example which searches for the pattern 'word:' followed by a 3 letter word (details below):
       </p>
       <p class="exampleCode">
-        Reading one line at a time has the nice quality that not all the file needs to fit in memory at one time -- handy if you want to look at every line in a 10 gigabyte file without using 10 gigabytes of memory. The f.readlines() method reads the whole file into memory and returns its contents as a list of its lines. The f.read() method reads the whole file into a single string, which can be a handy way to deal with the text all at once, such as with regular expressions we'll see later.
-        For writing, f.write(string) method is the easiest way to write data to an open output file. Or you can use "print" with an open file, but the syntax is nasty: "print >> f, string". In python 3000, the print syntax will be fixed to be a regular function call with a file= optional argument: "print(string, file=f)".
+          str = <span class="str">'an example word:cat!!'</span><br>
+          match = re.search(r<span class="str">'word:\w\w\w'</span>, str)<br>
+          <span class="comment"># If-statement after search() tests if it succeeded</span><br>
+          <span class="kwd">if</span> match:<br>
+          &nbsp;&nbsp; <span class="kwd">print</span> <span class="str">'found'</span>, match.<span class="kwd">group()</span> <span class="comment">## 'found word:cat'</span><br>
+          <span class="kwd">else:</span><br>
+          &nbsp;&nbsp; <span class="kwd">print</span> <span class="str">'did not find'</span><br>
+      </p>
+      <p class="lessonContent">
+        The code match = re.search(pat, str) stores the search result in a variable named "match". Then the if-statement tests the match -- if true the search succeeded and match.group() is the matching text (e.g. 'word:cat'). Otherwise if the match is false (None to be more specific), then the search did not succeed, and there is no matching text.
+        The 'r' at the start of the pattern string designates a python "raw" string which passes through backslashes without change which is very handy for regular expressions (Java needs this feature badly!). I recommend that you always write pattern strings with the 'r' just as a habit.
       </p>
     </div>
   </div>

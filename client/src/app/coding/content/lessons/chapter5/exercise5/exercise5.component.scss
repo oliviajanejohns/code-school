@@ -28,27 +28,16 @@
     background-color: #f7f7f7;
 }
 
-// .learn{
-//     overflow: auto !important;
-//     max-height: 48vh !important;  
-//     height: 48vh !important;  
-// }
-
-// @media (min-width: 768px) {
 .learn{
     overflow: auto !important;
-    max-height: 60vh !important;  
-    height: 60vh !important;  
+    max-height: 48vh !important;  
+    height: 48vh !important;  
 }
 
-.kwd{
-    color: #3b78e7;
+@media (min-width: 768px) {
+    .learn{
+        overflow: auto !important;
+        max-height: 60vh !important;  
+        height: 60vh !important;  
     }
-    
-    .comment{
-        color: #d81b60;
-    }
-    
-    .lit{
-        color: #c53929;
-    }
+}
