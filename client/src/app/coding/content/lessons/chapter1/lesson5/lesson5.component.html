@@ -10,21 +10,23 @@
         </p>
         <p class="exampleCode">
             <span class = "kwd">if</span> speed &#62;= <span class="lit">80</span>:<br>
-            <span class = "kwd">print</span> <span class="str">'License and registration please'</span><br>
+            &nbsp;&nbsp;<span class = "kwd">print</span> <span class="str">'License and registration please'</span><br>
             <span class = "kwd">if</span> mood == <span class="str">'terrible'</span> or speed >= <span class="lit">100</span>:<br>
-            <span class = "kwd">print</span> <span class="str">'You have the right to remain silent.'</span><br>
+            &nbsp;&nbsp;<span class = "kwd">print</span> <span class="str">'You have the right to remain silent.'</span><br>
             <span class = "kwd">elif</span> mood == <span class="str">'bad'</span> or speed >= 90:<br>
-            <span class = "kwd">print</span><span class="str">"I'm going to have to write you a ticket."</span><br>
-            write_ticket()<br>
+            &nbsp;&nbsp;<span class = "kwd">print</span><span class="str">"I'm going to have to write you a ticket."</span><br>
+            &nbsp;&nbsp;write_ticket()<br>
             <span class = "kwd">else:</span><br>
-            <span class = "kwd">print</span><span class="str">"Let's try to keep it under 80 ok?"</span>
+            &nbsp;&nbsp;<span class = "kwd">print</span><span class="str">"Let's try to keep it under 80 ok?"</span>
         </p>
         <p class="lessonContent">
           I find that omitting the ":" is my most common syntax mistake when typing in the above sort of code, probably since that's an additional thing to type vs. my C++/Java habits. Also, don't put the boolean test in parens -- that's a C/Java habit. If the code is short, you can put the code on the same line after ":", like this (this applies to functions, loops, etc. also), although some people feel it's more readable to space things out on separate lines.
         </p>
         <p class="exampleCode">
-            if speed &#62;= 80: print 'You are so busted'
-            <br>else: print 'Have a nice day'     
+            <span class = "kwd">if</span> speed &#62;= <span class="lit">80</span>: <br>
+            &nbsp;&nbsp;<span class="kwd">print</span> <span class="str">'You are so busted'</span><br>
+            <span class="kwd">else:</span><br>
+            &nbsp;&nbsp;<span class="kwd">print</span> <span class="str">'Have a nice day' </span>    
         </p>   
       </div>
     </div>

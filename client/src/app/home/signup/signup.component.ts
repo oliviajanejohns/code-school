@@ -40,15 +40,27 @@ export class SignupComponent {
       this.userService.create(this.user)
           .subscribe(
               data => {
-                  this.router.navigate(['/']);
-                  this.close();
+                  this.login(this.user.username, this.user.password)
               },
               error => {
                   this.alertService.error(error);
               }
           );
-    } else {
+
+      } else {
       alert('Username and Password are required');
     }
   }
-}    
+  
+login(username, password){
+      this.authService.login(username, password)
+      .subscribe(
+        data => {
+        this.router.navigate(['/dashboard']);
+        this.close();
+      },
+      error => {
+        this.alertService.error(error);
+      });
+    }
+}  

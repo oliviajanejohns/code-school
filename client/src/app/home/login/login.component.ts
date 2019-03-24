@@ -40,6 +40,8 @@ export class LoginComponent implements OnInit{
   }
 
   validateLogin() {
+  if(this.user.username && this.user.password){
+
   this.authService.login(this.user.username, this.user.password)
       .subscribe(
         data => {
@@ -49,5 +51,8 @@ export class LoginComponent implements OnInit{
       error => {
         this.alertService.error(error);
       });
+  }else{
+    alert('Username and Password are required');
+  }
   }
 }

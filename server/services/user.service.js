@@ -193,6 +193,7 @@ function create(userParam) {
 
 function addFriend(_id, friends) {
     var deferred = Q.defer();
+
     db.users.findOne({email : friends}, function (err, user) {
         if (err) deferred.reject(err.name + ': ' + err.message);
         if(user){
@@ -211,9 +212,9 @@ function addFriend(_id, friends) {
 }
 
 
+
 function update(_id, userParam) {
     var deferred = Q.defer();
-
     // validation
     db.users.findById(_id, function (err, user) {
         if (err) deferred.reject(err.name + ': ' + err.message);
@@ -236,7 +237,6 @@ function update(_id, userParam) {
             updateUser();
         }
     });
-
     function updateUser() {
         // fields to update
         var set = {
@@ -247,12 +247,10 @@ function update(_id, userParam) {
             level: userParam.level,
             page: userParam.page
         };
-
         // update password if it was entered
         if (userParam.password) {
             set.hash = bcrypt.hashSync(userParam.password, 10);
         }
-
         db.users.update(
             { _id: mongo.helper.toObjectID(_id) },
             { $set: set },
@@ -262,7 +260,6 @@ function update(_id, userParam) {
                 deferred.resolve();
             });
     }
-
     return deferred.promise;
 }
 

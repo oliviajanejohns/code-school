@@ -30,11 +30,13 @@ export class DashboardComponent implements OnInit{
     private router: Router
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-
   }
   
   ngOnInit(){
     this.loadFriends(this.currentUser);
+  
+    this.sortArray();
+
     this.count = 0;
     this.level = 1;
     this.points = 0;
@@ -59,12 +61,21 @@ export class DashboardComponent implements OnInit{
     }
   }
 
-  private loadFriends(user: User) {
-      this.userService.getFriends(user).subscribe(users => { this.users = users; });
+  loadFriends(user: User) {
+      this.userService.getFriends(user).subscribe(users => { this.users = users.sort((user1, user2)  => 0 - (user1.points > user2.points ? 1 : -1)) });
       
-      this.users.sort(function(user1, user2){
-        return user2.points - user1.points;
-      }); 
+      // this.users.sort((user1, user2)  => 0 - (user1.points > user2.points ? 1 : -1));
+      // values.sort((a,b) => 0 - (a > b ? 1 : -1));
+
+      // this.users.sort(function(user1, user2){
+      //   return user2.points - user1.points;
+      // }); 
+      // this.users.sort((user1, user2)  => 0 - (user1.points > user2.points ? 1 : -1));
+  }
+
+  sortArray() {
+    this.users.sort((user1, user2)  => 0 - (user1.points > user2.points ? 1 : -1));
+    this.sortedArray = this.users.slice();
   }
 
   openModal() {
