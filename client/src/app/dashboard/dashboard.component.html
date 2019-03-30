@@ -99,6 +99,9 @@
             <div class="section">
               <p class="card-text label">Python is one the three most popular interpreted languages. Taught in numerous schools globally</p>
               <p class="card-text label italic">Content Covered: Introduction to Python, Strings, Lists, Sorting, Dicts and Files, Regular Expressions </p>
+              <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" [style.width]="percent + '%'" aria-valuemax="100">{{percent}}%</div>
+              </div>
             </div>
             <div class="secondaryButton">
               <a class="btn btn-lg btn-light reset" (click)="reset()">

@@ -202,12 +202,28 @@ function addFriend(_id, friends) {
                 { $addToSet: { friends: friends } } ,
                 function (err, doc) {
                     if (err) deferred.reject(err.name + ': ' + err.message);
-                    
+                    updateFriend();
                     deferred.resolve();
                 }
             );
         }
     });
+    function updateFriend() {
+        db.users.findById(_id, function (err, user) {
+            if (err) deferred.reject(err.name + ': ' + err.message);
+            if(user){
+                db.users.updateOne(
+                    { "email" : friends },
+                    { $addToSet: { friends: user.email } } ,
+                    function (err, doc) {
+                        if (err) deferred.reject(err.name + ': ' + err.message);
+                        deferred.resolve();
+                    }
+                );
+            }
+        });
+    }
+
     return deferred.promise;
 }
 

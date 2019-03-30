@@ -58,6 +58,7 @@ import { AvatarModule } from 'ngx-avatar';
 import { SidebarComponent } from './coding/sidebar/sidebar.component';
 import { CompletedComponent } from './coding/content/completed/completed.component';
 import { Exercise5Component } from './coding/content/lessons/chapter5/exercise5/exercise5.component';
+import { ResetComponent } from './dashboard/reset/reset.component';
 
 
 @NgModule({
@@ -106,6 +107,7 @@ import { Exercise5Component } from './coding/content/lessons/chapter5/exercise5/
     SidebarComponent,
     CompletedComponent,
     Exercise5Component,
+    ResetComponent,
 
     ],
   imports: [
@@ -135,7 +137,8 @@ import { Exercise5Component } from './coding/content/lessons/chapter5/exercise5/
     LoginComponent,
     HelpComponent,
     FriendsComponent,
-    DeleteComponent
+    DeleteComponent,
+    ResetComponent,
   ],
 })
 export class AppModule { }

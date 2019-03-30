@@ -31,7 +31,6 @@ export class SettingsComponent {
     this.modalRef = this.modalService.show(DeleteComponent);
   }
   
-  
   editUser() {
     this.userService.update(this.currentUser).subscribe(
       data => {

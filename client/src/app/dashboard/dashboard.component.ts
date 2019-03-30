@@ -5,6 +5,7 @@ import { User } from '../models/user.model';
 import {Router} from '@angular/router';
 import { FriendsComponent } from './friends/friends.component';
 import { UserService } from '../services/user.service';
+import { ResetComponent } from './reset/reset.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -91,15 +92,17 @@ export class DashboardComponent implements OnInit{
   }
 
   reset(){
-    this.currentUser.page = this.count;
-    this.currentUser.points = this.points;
-    this.currentUser.level = this.level;
+  //   this.currentUser.page = this.count;
+  //   this.currentUser.points = this.points;
+  //   this.currentUser.level = this.level;
 
-    this.userService.update(this.currentUser).subscribe(
-      data => {
-      });
-      window.location.reload();
+  //   this.userService.update(this.currentUser).subscribe(
+  //     data => {
+  //     });
+  //     window.location.reload();
 
+  // }
+    this.modalRef = this.modalService.show(ResetComponent);
   }
 }
 
